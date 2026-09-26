@@ -1,928 +1,208 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Reino do Lanche | Cardápio</title>
-
-<style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-  font-family:Arial,Helvetica,sans-serif;
-}
-
-body{
-  background:#050505;
-  color:#fff;
-}
-
-header{
-  background:#080808;
-  border-bottom:1px solid #292929;
-  padding:15px 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:20px;
-  position:sticky;
-  top:0;
-  z-index:100;
-}
-
-.logo{
-  display:flex;
-  align-items:center;
-  gap:12px;
-}
-
-.logo-icon{
-  font-size:42px;
-}
-
-.logo h1{
-  font-size:25px;
-  color:#fff;
-}
-
-.logo span{
-  color:#f5a900;
-}
-
-.logo small{
-  display:block;
-  color:#aaa;
-  font-size:10px;
-  letter-spacing:2px;
-}
-
-.header-info{
-  display:flex;
-  gap:25px;
-  align-items:center;
-  font-size:13px;
-  color:#ddd;
-}
-
-.whatsapp{
-  background:#18c65b;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:10px;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.hero{
-  min-height:330px;
-  display:flex;
-  align-items:center;
-  padding:40px 6%;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.55)),
-    url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1600&q=85");
-  background-size:cover;
-  background-position:center;
-}
-
-.hero-content{
-  max-width:600px;
-}
-
-.hero h2{
-  font-size:52px;
-  text-transform:uppercase;
-  margin-bottom:10px;
-}
-
-.hero h2 span{
-  color:#f5a900;
-}
-
-.hero p{
-  font-size:18px;
-  color:#ddd;
-  margin-bottom:25px;
-}
-
-.hero-button{
-  display:inline-block;
-  background:#e50920;
-  color:white;
-  padding:14px 25px;
-  border-radius:8px;
-  text-decoration:none;
-  font-weight:bold;
-}
-
-.categories{
-  display:flex;
-  gap:10px;
-  padding:20px 5%;
-  overflow-x:auto;
-  background:#090909;
-  border-bottom:1px solid #222;
-}
-
-.category{
-  border:1px solid #333;
-  background:#111;
-  color:white;
-  padding:14px 20px;
-  border-radius:10px;
-  cursor:pointer;
-  white-space:nowrap;
-}
-
-.category.active,
-.category:hover{
-  background:#e50920;
-  border-color:#e50920;
-}
-
-.container{
-  width:90%;
-  max-width:1400px;
-  margin:35px auto;
-}
-
-.section{
-  margin-bottom:45px;
-}
-
-.section-title{
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  margin-bottom:20px;
-}
-
-.section-title h2{
-  font-size:28px;
-}
-
-.section-title h2 span{
-  color:#f5a900;
-}
-
-.products{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
-  gap:18px;
-}
-
-.card{
-  background:#0d0d0d;
-  border:1px solid #292929;
-  border-radius:12px;
-  overflow:hidden;
-  transition:.2s;
-}
-
-.card:hover{
-  transform:translateY(-4px);
-  border-color:#f5a900;
-}
-
-.card img{
-  width:100%;
-  height:155px;
-  object-fit:cover;
-}
-
-.card-content{
-  padding:15px;
-}
-
-.card h3{
-  font-size:18px;
-  margin-bottom:7px;
-}
-
-.card p{
-  color:#aaa;
-  font-size:13px;
-  min-height:36px;
-}
-
-.price{
-  color:#f5a900;
-  font-size:20px;
-  font-weight:bold;
-  margin:12px 0;
-}
-
-.add{
-  width:100%;
-  border:none;
-  background:#e50920;
-  color:#fff;
-  padding:12px;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.add:hover{
-  background:#ff2038;
-}
-
-.promo{
-  border:1px solid #f5a900;
-  background:linear-gradient(135deg,#170f00,#0b0b0b);
-}
-
-.discount{
-  position:absolute;
-  background:#e50920;
-  padding:6px 10px;
-  border-radius:0 0 8px 0;
-  font-weight:bold;
-}
-
-.combo-grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
-  gap:18px;
-}
-
-.combo{
-  background:#111;
-  border:1px solid #3b2b08;
-  border-radius:12px;
-  padding:18px;
-}
-
-.combo h3{
-  color:#f5a900;
-  margin-bottom:8px;
-}
-
-.combo p{
-  color:#bbb;
-  font-size:14px;
-  line-height:1.5;
-}
-
-.cart{
-  position:fixed;
-  right:20px;
-  bottom:20px;
-  width:330px;
-  max-width:calc(100% - 40px);
-  background:#101010;
-  border:1px solid #f5a900;
-  border-radius:15px;
-  padding:18px;
-  z-index:200;
-  box-shadow:0 10px 40px rgba(0,0,0,.7);
-}
-
-.cart h3{
-  margin-bottom:12px;
-  color:#f5a900;
-}
-
-.cart-items{
-  max-height:220px;
-  overflow:auto;
-}
-
-.cart-item{
-  display:flex;
-  justify-content:space-between;
-  gap:10px;
-  padding:9px 0;
-  border-bottom:1px solid #292929;
-  font-size:14px;
-}
-
-.remove{
-  color:#ff3348;
-  cursor:pointer;
-}
-
-.total{
-  display:flex;
-  justify-content:space-between;
-  font-size:20px;
-  font-weight:bold;
-  margin:15px 0;
-}
-
-.checkout{
-  width:100%;
-  padding:13px;
-  background:#18c65b;
-  border:none;
-  color:white;
-  border-radius:8px;
-  font-weight:bold;
-  cursor:pointer;
-}
-
-.empty{
-  color:#888;
-  font-size:13px;
-}
-
-footer{
-  background:#080808;
-  border-top:1px solid #292929;
-  padding:35px 5%;
-  margin-top:50px;
-}
-
-.footer-content{
-  max-width:1400px;
-  margin:auto;
-  display:flex;
-  justify-content:space-between;
-  gap:25px;
-  flex-wrap:wrap;
-}
-
-footer h2{
-  color:#f5a900;
-}
-
-footer p{
-  color:#aaa;
-  margin-top:8px;
-}
-
-@media(max-width:800px){
-
-  header{
-    padding:12px 4%;
-  }
-
-  .header-info{
-    display:none;
-  }
-
-  .hero{
-    min-height:300px;
-    padding:35px 6%;
-  }
-
-  .hero h2{
-    font-size:38px;
-  }
-
-  .hero p{
-    font-size:15px;
-  }
-
-  .products{
-    grid-template-columns:repeat(2,1fr);
-    gap:10px;
-  }
-
-  .card img{
-    height:120px;
-  }
-
-  .card-content{
-    padding:10px;
-  }
-
-  .card h3{
-    font-size:15px;
-  }
-
-  .card p{
-    font-size:11px;
-  }
-
-  .price{
-    font-size:17px;
-  }
-
-  .add{
-    padding:9px;
-    font-size:12px;
-  }
-
-  .cart{
-    right:10px;
-    bottom:10px;
-    width:calc(100% - 20px);
-  }
-}
-</style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardápio</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #111;
+            color: #fff;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: #181818;
+        }
+
+        header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        header p {
+            color: #ccc;
+        }
+
+        .categoria {
+            padding: 25px 15px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .categoria h2 {
+            font-size: 26px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .cardapio {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 18px;
+        }
+
+        .produto {
+            background: #1d1d1d;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+        }
+
+        .produto h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+        }
+
+        .descricao {
+            color: #cfcfcf;
+            font-size: 14px;
+            line-height: 1.5;
+            margin-bottom: 15px;
+        }
+
+        .preco {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #aaa;
+        }
+    </style>
 </head>
 
 <body>
 
-<header>
-
-  <div class="logo">
-    <div class="logo-icon">👑🍔</div>
-    <div>
-      <h1>REINO DO <span>LANCHE</span></h1>
-      <small>SABOR QUE É REI!</small>
-    </div>
-  </div>
-
-  <div class="header-info">
-    <div>📍 Sua cidade</div>
-    <div>🕐 Aberto todos os dias</div>
-  </div>
-
-  <a class="whatsapp" href="#pedido">
-    📱 Fazer pedido
-  </a>
-
-</header>
-
-
-<section class="hero">
-
-  <div class="hero-content">
-
-    <h2>
-      REINO DO <span>LANCHE</span>
-    </h2>
-
-    <p>
-      Hambúrgueres, fritas, porções, bebidas
-      e muito mais!
-    </p>
-
-    <a class="hero-button" href="#cardapio">
-      👑 VER CARDÁPIO
-    </a>
-
-  </div>
-
-</section>
-
-
-<nav class="categories">
-
-  <button class="category active" onclick="irPara('hamburgueres')">
-    🍔 Hambúrgueres
-  </button>
-
-  <button class="category" onclick="irPara('fritas')">
-    🍟 Fritas
-  </button>
-
-  <button class="category" onclick="irPara('porcoes')">
-    🍗 Porções
-  </button>
-
-  <button class="category" onclick="irPara('bebidas')">
-    🥤 Bebidas
-  </button>
-
-  <button class="category" onclick="irPara('promocoes')">
-    🔥 Promoções
-  </button>
-
-  <button class="category" onclick="irPara('combos')">
-    👑 Combos
-  </button>
-
-</nav>
-
-
-<main class="container" id="cardapio">
-
-
-<!-- HAMBÚRGUERES -->
-
-<section class="section" id="hamburgueres">
-
-  <div class="section-title">
-    <h2>🍔 <span>Hambúrgueres</span></h2>
-  </div>
-
-  <div class="products">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>X-Bacon</h3>
-        <p>Hambúrguer, bacon, queijo, alface e molho especial.</p>
-        <div class="price">R$ 24,90</div>
-        <button class="add" onclick="adicionar('X-Bacon',24.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>X-Tudo</h3>
-        <p>Hambúrguer, queijo, presunto, bacon, ovo e molho.</p>
-        <div class="price">R$ 29,90</div>
-        <button class="add" onclick="adicionar('X-Tudo',29.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>X-Double</h3>
-        <p>Dois hambúrgueres, queijo, bacon e molho especial.</p>
-        <div class="price">R$ 32,90</div>
-        <button class="add" onclick="adicionar('X-Double',32.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>X-Salada</h3>
-        <p>Hambúrguer, queijo, alface, tomate e maionese.</p>
-        <div class="price">R$ 21,90</div>
-        <button class="add" onclick="adicionar('X-Salada',21.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1603064752734-4c48eff53d05?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>X-Calabresa</h3>
-        <p>Hambúrguer, calabresa, queijo, cebola e molho.</p>
-        <div class="price">R$ 27,90</div>
-        <button class="add" onclick="adicionar('X-Calabresa',27.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>X-Frango</h3>
-        <p>Frango, queijo, alface, tomate e molho especial.</p>
-        <div class="price">R$ 22,90</div>
-        <button class="add" onclick="adicionar('X-Frango',22.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PROMOÇÕES -->
-
-<section class="section" id="promocoes">
-
-  <div class="section-title">
-    <h2>🔥 <span>Promoções</span></h2>
-  </div>
-
-  <div class="products">
-
-    <div class="card promo">
-      <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>Combo Clássico</h3>
-        <p>X-Bacon + Batata + Coca-Cola 350ml.</p>
-        <div class="price">R$ 27,90</div>
-        <button class="add" onclick="adicionar('Combo Clássico',27.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-
-    <div class="card promo">
-      <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>Combo Duplo</h3>
-        <p>2 Hambúrgueres + 2 Batatas + 2 Refrigerantes.</p>
-        <div class="price">R$ 62,90</div>
-        <button class="add" onclick="adicionar('Combo Duplo',62.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- COMBOS -->
-
-<section class="section" id="combos">
-
-  <div class="section-title">
-    <h2>👑 <span>Combos</span></h2>
-  </div>
-
-  <div class="combo-grid">
-
-    <div class="combo">
-      <h3>👑 Combo Família</h3>
-      <p>4 hambúrgueres + 2 porções de fritas + refrigerante 1L.</p>
-      <div class="price">R$ 89,90</div>
-      <button class="add" onclick="adicionar('Combo Família',89.90)">+ Adicionar</button>
-    </div>
-
-    <div class="combo">
-      <h3>👑 Combo Premium</h3>
-      <p>4 hambúrgueres especiais + 2 fritas grandes + refrigerante 2L.</p>
-      <div class="price">R$ 129,90</div>
-      <button class="add" onclick="adicionar('Combo Premium',129.90)">+ Adicionar</button>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- FRITAS -->
-
-<section class="section" id="fritas">
-
-  <div class="section-title">
-    <h2>🍟 <span>Fritas</span></h2>
-  </div>
-
-  <div class="products">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>Batata Frita</h3>
-        <p>Batatas crocantes e sequinhas.</p>
-        <div class="price">R$ 16,90</div>
-        <button class="add" onclick="adicionar('Batata Frita',16.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1585109649139-366815a0d713?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>Batata Cheddar e Bacon</h3>
-        <p>Batata, cheddar cremoso e bacon.</p>
-        <div class="price">R$ 24,90</div>
-        <button class="add" onclick="adicionar('Batata Cheddar e Bacon',24.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- PORÇÕES -->
-
-<section class="section" id="porcoes">
-
-  <div class="section-title">
-    <h2>🍗 <span>Porções</span></h2>
-  </div>
-
-  <div class="products">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1534790566855-4cb788d389ec?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>Onion Rings</h3>
-        <p>Anéis de cebola crocantes.</p>
-        <div class="price">R$ 16,90</div>
-        <button class="add" onclick="adicionar('Onion Rings',16.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1608039755401-742074f0548d?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>Frango a Passarinho</h3>
-        <p>Frango crocante e temperado.</p>
-        <div class="price">R$ 24,90</div>
-        <button class="add" onclick="adicionar('Frango a Passarinho',24.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-
-<!-- BEBIDAS -->
-
-<section class="section" id="bebidas">
-
-  <div class="section-title">
-    <h2>🥤 <span>Bebidas</span></h2>
-  </div>
-
-  <div class="products">
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1629203849820-fdd70d49c38e?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>Refrigerante 350ml</h3>
-        <p>Escolha seu refrigerante favorito.</p>
-        <div class="price">R$ 7,90</div>
-        <button class="add" onclick="adicionar('Refrigerante 350ml',7.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-    <div class="card">
-      <img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba?auto=format&fit=crop&w=600&q=80">
-      <div class="card-content">
-        <h3>Água 500ml</h3>
-        <p>Água mineral.</p>
-        <div class="price">R$ 5,90</div>
-        <button class="add" onclick="adicionar('Água 500ml',5.90)">+ Adicionar</button>
-      </div>
-    </div>
-
-  </div>
-
-</section>
-
-</main>
-
-
-<!-- CARRINHO -->
-
-<div class="cart" id="pedido">
-
-  <h3>🛒 Meu pedido</h3>
-
-  <div class="cart-items" id="cartItems">
-    <div class="empty">
-      Seu carrinho está vazio.
-    </div>
-  </div>
-
-  <div class="total">
-    <span>Total</span>
-    <span id="total">R$ 0,00</span>
-  </div>
-
-  <button class="checkout" onclick="finalizarPedido()">
-    📱 Pedir pelo WhatsApp
-  </button>
-
-</div>
-
-
-<footer>
-
-  <div class="footer-content">
-
-    <div>
-      <h2>👑 REINO DO LANCHE</h2>
-      <p>Sabor que é rei!</p>
-    </div>
-
-    <div>
-      <p>📍 Sua cidade</p>
-      <p>🕐 Aberto todos os dias</p>
-    </div>
-
-    <div>
-      <p>📱 WhatsApp</p>
-      <p>🍔 Faça seu pedido!</p>
-    </div>
-
-  </div>
-
-</footer>
-
-
-<script>
-
-let carrinho = [];
-
-function adicionar(nome, preco){
-
-  carrinho.push({
-    nome:nome,
-    preco:preco
-  });
-
-  atualizarCarrinho();
-
-}
-
-function remover(index){
-
-  carrinho.splice(index,1);
-
-  atualizarCarrinho();
-
-}
-
-function atualizarCarrinho(){
-
-  const area = document.getElementById("cartItems");
-  const totalArea = document.getElementById("total");
-
-  if(carrinho.length === 0){
-
-    area.innerHTML =
-      '<div class="empty">Seu carrinho está vazio.</div>';
-
-    totalArea.innerText = "R$ 0,00";
-
-    return;
-
-  }
-
-  let total = 0;
-
-  area.innerHTML = "";
-
-  carrinho.forEach((item,index)=>{
-
-    total += item.preco;
-
-    area.innerHTML += `
-      <div class="cart-item">
-        <span>${item.nome}</span>
-
-        <span>
-          R$ ${item.preco.toFixed(2).replace(".",",")}
-          <span class="remove"
-          onclick="remover(${index})"> ✕</span>
-        </span>
-      </div>
-    `;
-
-  });
-
-  totalArea.innerText =
-    "R$ " + total.toFixed(2).replace(".",",");
-
-}
-
-
-function finalizarPedido(){
-
-  if(carrinho.length === 0){
-
-    alert("Adicione algum produto ao seu pedido!");
-
-    return;
-
-  }
-
-  let mensagem =
-    "👑 *REINO DO LANCHE*%0A%0A";
-
-  let total = 0;
-
-  carrinho.forEach(item=>{
-
-    mensagem +=
-      "🍔 " + item.nome +
-      " - R$ " +
-      item.preco.toFixed(2).replace(".",",") +
-      "%0A";
-
-    total += item.preco;
-
-  });
-
-  mensagem +=
-    "%0A💰 *Total: R$ " +
-    total.toFixed(2).replace(".",",") +
-    "*";
-
-  /*
-    COLOQUE AQUI O NÚMERO REAL DO WHATSAPP
-    Exemplo:
-    5521999999999
-  */
-
-  const numero =
-    "5521999999999";
-
-  const url =
-    "https://wa.me/" +
-    numero +
-    "?text=" +
-    mensagem;
-
-  window.open(url,"_blank");
-
-}
-
-
-function irPara(id){
-
-  document
-    .getElementById(id)
-    .scrollIntoView({
-      behavior:"smooth"
-    });
-
-}
-
-</script>
+    <header>
+        <h1>🍔 Nosso Cardápio</h1>
+        <p>Escolha seu hambúrguer favorito!</p>
+    </header>
+
+    <main>
+        <section class="categoria">
+
+            <h2>🍔 Hambúrgueres</h2>
+
+            <div class="cardapio">
+
+                <div class="produto">
+                    <h3>X-Tudo</h3>
+                    <p class="descricao">
+                        Pão, carne, queijo, presunto, ovo, bacon, ketchup,
+                        mostarda, maionese, barbecue, salada e batata palha.
+                    </p>
+                    <p class="preco">R$ 15,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>X-Duplo</h3>
+                    <p class="descricao">
+                        Pão, 2 carnes, queijo, presunto, ovo, bacon, ketchup,
+                        mostarda, maionese, barbecue, salada e batata palha.
+                    </p>
+                    <p class="preco">R$ 20,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>X-Bacon</h3>
+                    <p class="descricao">
+                        Hambúrguer grelhado 140g, queijo, lombo,
+                        salada e molho da casa.
+                    </p>
+                    <p class="preco">R$ 17,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>X-Picanha</h3>
+                    <p class="descricao">
+                        Pão, carne de picanha, cheddar, ovo, ketchup,
+                        maionese, barbecue, salada e batata palha.
+                    </p>
+                    <p class="preco">R$ 19,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>X-Chicken</h3>
+                    <p class="descricao">
+                        Pão, carne de frango, queijo, presunto, ovo, ketchup,
+                        mostarda, maionese, barbecue, salada e batata palha.
+                    </p>
+                    <p class="preco">R$ 12,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>X-Batata</h3>
+                    <p class="descricao">
+                        Pão, carne, queijo cheddar, bacon, presunto,
+                        batata frita, salada, ketchup, maionese e barbecue.
+                    </p>
+                    <p class="preco">R$ 18,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>X-Onions</h3>
+                    <p class="descricao">
+                        Pão, carne de picanha, presunto, queijo cheddar,
+                        onions de cebola, ketchup, maionese e barbecue.
+                    </p>
+                    <p class="preco">R$ 18,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>X-Mineiro</h3>
+                    <p class="descricao">
+                        Pão, carne de picanha, presunto, queijo Minas,
+                        bacon, salada, batata palha, maionese, ketchup e barbecue.
+                    </p>
+                    <p class="preco">R$ 19,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>X-3 Queijos</h3>
+                    <p class="descricao">
+                        Pão, carne de picanha, presunto, queijo prato,
+                        queijo cheddar, queijo Minas, bacon, salada,
+                        batata palha, maionese, ketchup e barbecue.
+                    </p>
+                    <p class="preco">R$ 19,99</p>
+                </div>
+
+                <div class="produto">
+                    <h3>Cheesburguer</h3>
+                    <p class="descricao">
+                        Pão, carne, presunto, queijo prato, ketchup,
+                        maionese, mostarda e barbecue.
+                    </p>
+                    <p class="preco">R$ 9,00</p>
+                </div>
+
+                <div class="produto">
+                    <h3>Duplo Cheddar</h3>
+                    <p class="descricao">
+                        Pão, 2 carnes, cheddar e cebola caramelizada.
+                    </p>
+                    <p class="preco">R$ 17,99</p>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>© 2026 - Nosso Cardápio</p>
+    </footer>
 
 </body>
-  </html>
+</html>
