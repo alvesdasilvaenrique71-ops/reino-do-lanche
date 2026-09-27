@@ -16,7 +16,7 @@
 
 body{
     background:#070707;
-    color:white;
+    color:#fff;
 }
 
 header{
@@ -57,7 +57,7 @@ header{
 
 .cart-btn{
     background:#e50914;
-    color:white;
+    color:#fff;
     border:none;
     padding:11px 15px;
     border-radius:10px;
@@ -72,16 +72,17 @@ header{
     justify-content:center;
     text-align:center;
     padding:40px 20px;
+
     background:
     linear-gradient(rgba(0,0,0,.72),rgba(0,0,0,.82)),
     url("https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1400&q=85");
+
     background-size:cover;
     background-position:center;
 }
 
 .hero-content h2{
     font-size:38px;
-    color:#fff;
 }
 
 .hero-content h2 span{
@@ -91,7 +92,6 @@ header{
 .hero-content p{
     margin-top:12px;
     color:#ddd;
-    font-size:16px;
 }
 
 .hero-btn{
@@ -183,6 +183,25 @@ main{
     display:block;
 }
 
+.combo-fotos{
+    height:210px;
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:3px;
+    background:#000;
+}
+
+.combo-fotos.tres{
+    grid-template-columns:repeat(3,1fr);
+}
+
+.combo-fotos img{
+    width:100%;
+    height:100%;
+    min-height:0;
+    object-fit:cover;
+}
+
 .produto-info{
     padding:16px;
 }
@@ -190,7 +209,6 @@ main{
 .produto-info h3{
     font-size:19px;
     margin-bottom:7px;
-    color:#fff;
 }
 
 .descricao{
@@ -213,7 +231,7 @@ main{
     border:none;
     border-radius:9px;
     background:#e50914;
-    color:white;
+    color:#fff;
     font-weight:bold;
     cursor:pointer;
 }
@@ -230,6 +248,7 @@ main{
     padding:25px;
     border-radius:14px;
     color:#aaa;
+    grid-column:1/-1;
 }
 
 .sobre{
@@ -333,7 +352,7 @@ footer p{
 
 .fechar{
     background:none;
-    color:white;
+    color:#fff;
     border:none;
     font-size:25px;
     cursor:pointer;
@@ -377,9 +396,9 @@ footer p{
     cursor:pointer;
 }
 
-.remover{
-    background:#e50914 !important;
-    color:white;
+.controles .remover{
+    background:#e50914;
+    color:#fff;
     margin-left:auto;
 }
 
@@ -409,7 +428,7 @@ footer p{
     margin-bottom:10px;
     border:1px solid #333;
     background:#151515;
-    color:white;
+    color:#fff;
     border-radius:8px;
     outline:none;
 }
@@ -436,8 +455,6 @@ footer p{
     color:#888;
     padding:30px 10px;
 }
-
-/* RESPONSIVO */
 
 @media(max-width:600px){
 
@@ -467,10 +484,6 @@ footer p{
         font-size:29px;
     }
 
-    .hero-content p{
-        font-size:14px;
-    }
-
     main{
         padding:15px;
     }
@@ -482,6 +495,10 @@ footer p{
     .produto img{
         height:220px;
     }
+
+    .combo-fotos{
+        height:220px;
+    }
 }
 </style>
 </head>
@@ -490,7 +507,11 @@ footer p{
 
 <header>
 
-    <img src="logo-vf-filhos.jpeg" class="logo" alt="VF Filhos Lanches">
+    <img
+        src="logo-vf-filhos.jpeg"
+        class="logo"
+        alt="VF Filhos Lanches"
+    >
 
     <div class="header-info">
         <h1>VF Filhos Lanches</h1>
@@ -502,6 +523,7 @@ footer p{
     </button>
 
 </header>
+
 
 <section class="hero">
 
@@ -523,6 +545,7 @@ footer p{
     </div>
 
 </section>
+
 
 <div class="categorias">
 
@@ -560,37 +583,55 @@ footer p{
 
 </div>
 
+
 <main id="cardapio">
 
     <div class="titulo-categoria">
-        <h2 id="tituloCategoria">🍔 Hambúrgueres</h2>
+
+        <h2 id="tituloCategoria">
+            🍔 Hambúrgueres
+        </h2>
+
         <p id="subtituloCategoria">
             Escolha seu hambúrguer favorito.
         </p>
+
     </div>
+
 
     <div class="produtos" id="listaProdutos">
 
-        <!-- HAMBÚRGUERES -->
+
+        <!-- =========================
+             HAMBÚRGUERES
+        ========================== -->
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85"
+                alt="X-Tudo"
+            >
 
             <div class="produto-info">
+
                 <h3>X-Tudo</h3>
 
                 <p class="descricao">
-                    Pão, carne, queijo, presunto, ovo, bacon, ketchup,
-                    mostarda, maionese, barbecue, salada e batata palha.
+                    Pão, carne, queijo, presunto, ovo, bacon,
+                    ketchup, mostarda, maionese, barbecue,
+                    salada e batata palha.
                 </p>
 
-                <div class="preco">R$ 15,99</div>
+                <div class="preco">
+                    R$ 15,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-Tudo',15.99)">
+                    onclick="adicionarCarrinho('X-Tudo',15.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -598,9 +639,13 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=85"
+                alt="X-Duplo"
+            >
 
             <div class="produto-info">
+
                 <h3>X-Duplo</h3>
 
                 <p class="descricao">
@@ -609,12 +654,15 @@ footer p{
                     salada e batata palha.
                 </p>
 
-                <div class="preco">R$ 20,99</div>
+                <div class="preco">
+                    R$ 20,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-Duplo',20.99)">
+                    onclick="adicionarCarrinho('X-Duplo',20.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -622,9 +670,13 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1565299507177-b0ac66763828?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://snapcalorie-webflow-website.s3.us-east-2.amazonaws.com/media/food_pics_v2/bacon_burger.jpg"
+                alt="X-Bacon"
+            >
 
             <div class="produto-info">
+
                 <h3>X-Bacon</h3>
 
                 <p class="descricao">
@@ -632,12 +684,15 @@ footer p{
                     salada e molho da casa.
                 </p>
 
-                <div class="preco">R$ 17,99</div>
+                <div class="preco">
+                    R$ 17,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-Bacon',17.99)">
+                    onclick="adicionarCarrinho('X-Bacon',17.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -645,22 +700,30 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1551782450-a2132b4ba21d?auto=format&fit=crop&w=900&q=85"
+                alt="X-Picanha"
+            >
 
             <div class="produto-info">
+
                 <h3>X-Picanha</h3>
 
                 <p class="descricao">
-                    Pão, carne de picanha, cheddar, ovo, ketchup,
-                    maionese, barbecue, salada e batata palha.
+                    Pão, carne de picanha, cheddar, ovo,
+                    ketchup, maionese, barbecue, salada
+                    e batata palha.
                 </p>
 
-                <div class="preco">R$ 19,99</div>
+                <div class="preco">
+                    R$ 19,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-Picanha',19.99)">
+                    onclick="adicionarCarrinho('X-Picanha',19.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -668,9 +731,13 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1606755962773-d324e0a13086?auto=format&fit=crop&w=900&q=85"
+                alt="X-Chicken"
+            >
 
             <div class="produto-info">
+
                 <h3>X-Chicken</h3>
 
                 <p class="descricao">
@@ -679,12 +746,15 @@ footer p{
                     salada e batata palha.
                 </p>
 
-                <div class="preco">R$ 12,99</div>
+                <div class="preco">
+                    R$ 12,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-Chicken',12.99)">
+                    onclick="adicionarCarrinho('X-Chicken',12.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -692,22 +762,30 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=85"
+                alt="X-Batata"
+            >
 
             <div class="produto-info">
+
                 <h3>X-Batata</h3>
 
                 <p class="descricao">
                     Pão, carne, queijo cheddar, bacon, presunto,
-                    batata frita, salada, ketchup, maionese e barbecue.
+                    batata frita, salada, ketchup, maionese
+                    e barbecue.
                 </p>
 
-                <div class="preco">R$ 18,99</div>
+                <div class="preco">
+                    R$ 18,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-Batata',18.99)">
+                    onclick="adicionarCarrinho('X-Batata',18.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -715,9 +793,13 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://savouryflavor.com/assets/images/1764880155810-7r9ju040.webp"
+                alt="X-Onions"
+            >
 
             <div class="produto-info">
+
                 <h3>X-Onions</h3>
 
                 <p class="descricao">
@@ -725,12 +807,15 @@ footer p{
                     onions de cebola, ketchup, maionese e barbecue.
                 </p>
 
-                <div class="preco">R$ 18,99</div>
+                <div class="preco">
+                    R$ 18,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-Onions',18.99)">
+                    onclick="adicionarCarrinho('X-Onions',18.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -738,9 +823,13 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=900&q=85"
+                alt="X-Mineiro"
+            >
 
             <div class="produto-info">
+
                 <h3>X-Mineiro</h3>
 
                 <p class="descricao">
@@ -749,12 +838,15 @@ footer p{
                     ketchup e barbecue.
                 </p>
 
-                <div class="preco">R$ 19,99</div>
+                <div class="preco">
+                    R$ 19,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-Mineiro',19.99)">
+                    onclick="adicionarCarrinho('X-Mineiro',19.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -762,9 +854,13 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://3e87eb59177583ca20e5-3c4f8e07d4ab2f5f48a61d1d9b0d1b8c.ssl.cf2.rackcdn.com/20160624165855-b5af1360.jpg"
+                alt="X-3 Queijos"
+            >
 
             <div class="produto-info">
+
                 <h3>X-3 Queijos</h3>
 
                 <p class="descricao">
@@ -773,12 +869,15 @@ footer p{
                     batata palha, maionese, ketchup e barbecue.
                 </p>
 
-                <div class="preco">R$ 19,99</div>
+                <div class="preco">
+                    R$ 19,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('X-3 Queijos',19.99)">
+                    onclick="adicionarCarrinho('X-3 Queijos',19.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -786,9 +885,13 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1561758033-d89a9ad46330?auto=format&fit=crop&w=900&q=85"
+                alt="Cheesburguer"
+            >
 
             <div class="produto-info">
+
                 <h3>Cheesburguer</h3>
 
                 <p class="descricao">
@@ -796,12 +899,15 @@ footer p{
                     ketchup, maionese, mostarda e barbecue.
                 </p>
 
-                <div class="preco">R$ 9,00</div>
+                <div class="preco">
+                    R$ 9,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Cheesburguer',9)">
+                    onclick="adicionarCarrinho('Cheesburguer',9)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -809,46 +915,63 @@ footer p{
 
         <article class="produto" data-categoria="hamburgueres">
 
-            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=900&q=85"
+                alt="Duplo Cheddar"
+            >
 
             <div class="produto-info">
+
                 <h3>Duplo Cheddar</h3>
 
                 <p class="descricao">
                     Pão, 2 carnes, cheddar e cebola caramelizada.
                 </p>
 
-                <div class="preco">R$ 17,99</div>
+                <div class="preco">
+                    R$ 17,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Duplo Cheddar',17.99)">
+                    onclick="adicionarCarrinho('Duplo Cheddar',17.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
 
 
-        <!-- FRITAS -->
+        <!-- =========================
+             FRITAS
+        ========================== -->
 
         <article class="produto" data-categoria="fritas">
 
-            <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=900&q=85"
+                alt="Batata Frita P"
+            >
 
             <div class="produto-info">
+
                 <h3>Batata Frita P</h3>
 
                 <p class="descricao">
-                    Porção pequena de batatas fritas sequinhas e crocantes
-                    por fora, macias por dentro, perfeitas para acompanhar seu lanche.
+                    Porção pequena de batatas fritas sequinhas
+                    e crocantes por fora, macias por dentro,
+                    perfeitas para acompanhar seu lanche.
                 </p>
 
-                <div class="preco">R$ 10,00</div>
+                <div class="preco">
+                    R$ 10,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Batata Frita P',10)">
+                    onclick="adicionarCarrinho('Batata Frita P',10)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -856,23 +979,30 @@ footer p{
 
         <article class="produto" data-categoria="fritas">
 
-            <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=900&q=85"
+                alt="Batata Frita M"
+            >
 
             <div class="produto-info">
+
                 <h3>Batata Frita M</h3>
 
                 <p class="descricao">
-                    Batata frita crocante e douradinha, acompanhada de
-                    calabresa, maionese cremosa e aquele ketchup delicioso.
-                    Uma combinação de sabores que dá água na boca.
+                    Batata frita crocante e douradinha,
+                    acompanhada de calabresa, maionese cremosa
+                    e aquele ketchup delicioso.
                 </p>
 
-                <div class="preco">R$ 20,00</div>
+                <div class="preco">
+                    R$ 20,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Batata Frita M',20)">
+                    onclick="adicionarCarrinho('Batata Frita M',20)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -880,55 +1010,78 @@ footer p{
 
         <article class="produto" data-categoria="fritas">
 
-            <img src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=900&q=85"
+                alt="Batata Frita G"
+            >
 
             <div class="produto-info">
+
                 <h3>Batata Frita G</h3>
 
                 <p class="descricao">
-                    Batata frita crocante e douradinha, acompanhada de
-                    calabresa, maionese cremosa e aquele ketchup delicioso.
-                    Uma combinação de sabores que dá água na boca.
+                    Batata frita crocante e douradinha,
+                    acompanhada de calabresa, maionese cremosa
+                    e aquele ketchup delicioso.
                 </p>
 
-                <div class="preco">R$ 30,00</div>
+                <div class="preco">
+                    R$ 30,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Batata Frita G',30)">
+                    onclick="adicionarCarrinho('Batata Frita G',30)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
 
 
-        <!-- PORÇÕES -->
+        <!-- =========================
+             PORÇÕES
+        ========================== -->
 
         <div class="info-categoria" data-categoria="porcoes">
+
             <h2>🍗 Porções</h2>
-            <p>Em breve teremos novidades nessa categoria!</p>
+
+            <p>
+                Em breve teremos novidades nessa categoria!
+            </p>
+
         </div>
 
 
-        <!-- BEBIDAS -->
+        <!-- =========================
+             BEBIDAS
+        ========================== -->
 
         <article class="produto" data-categoria="bebidas">
 
-            <img src="https://dcfood.dooca.store/418/products/coca.jpg?v=1589835707000">
+            <img
+                src="https://carrefourbrfood.vtexassets.com/arquivos/ids/213629771/B2-12-156892_1.jpg?v=639107539531470000"
+                alt="Coca-Cola lata 350ml"
+            >
 
             <div class="produto-info">
+
                 <h3>Coca-Cola</h3>
 
                 <p class="descricao">
                     Coca-Cola geladinha em lata de 350 ml.
                 </p>
 
-                <div class="preco">R$ 10,00</div>
+                <div class="preco">
+                    R$ 10,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Coca-Cola lata 350 ml',10)">
+                    onclick="adicionarCarrinho('Coca-Cola lata 350 ml',10)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -936,22 +1089,29 @@ footer p{
 
         <article class="produto" data-categoria="bebidas">
 
-            <img src="https://www.brmart.com/p/guaravita-refresco-de-guarana-natural-290ml/961/">
+            <img
+                src="https://acdn-us.mitiendanube.com/stores/455/258/products/2251-a6512d3a65641b16e716803605828406-480-0.webp"
+                alt="Guaravita"
+            >
 
             <div class="produto-info">
+
                 <h3>Guaravita Natural</h3>
 
                 <p class="descricao">
-                    Guaravita natural de 290 ml, refrescante e perfeito
-                    para acompanhar seu lanche.
+                    Guaravita natural de 290 ml,
+                    refrescante e perfeito para acompanhar seu lanche.
                 </p>
 
-                <div class="preco">R$ 6,00</div>
+                <div class="preco">
+                    R$ 6,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Guaravita Natural',6)">
+                    onclick="adicionarCarrinho('Guaravita Natural',6)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -959,49 +1119,83 @@ footer p{
 
         <article class="produto" data-categoria="bebidas">
 
-            <img src="https://images.unsplash.com/photo-1564419320461-6870880221ad?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://s3.amazonaws.com/lepok.w/produtos/produtos/90983.jpg"
+                alt="Água mineral 500ml"
+            >
 
             <div class="produto-info">
+
                 <h3>Água Mineral</h3>
 
                 <p class="descricao">
-                    Água mineral 500 ml, ideal para acompanhar sua refeição.
+                    Água mineral 500 ml,
+                    ideal para acompanhar sua refeição.
                 </p>
 
-                <div class="preco">R$ 5,00</div>
+                <div class="preco">
+                    R$ 5,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Água Mineral 500 ml',5)">
+                    onclick="adicionarCarrinho('Água Mineral 500 ml',5)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
 
 
-        <!-- PROMOÇÕES -->
+        <!-- =========================
+             PROMOÇÕES
+        ========================== -->
 
         <article class="produto" data-categoria="promocoes">
 
-            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=85">
+            <div class="combo-fotos tres">
+
+                <img
+                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=85"
+                    alt="X-Tudo"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=600&q=85"
+                    alt="Batata frita"
+                >
+
+                <img
+                    src="https://acdn-us.mitiendanube.com/stores/455/258/products/2251-a6512d3a65641b16e716803605828406-480-0.webp"
+                    alt="Guaravita"
+                >
+
+            </div>
 
             <div class="produto-info">
-                <h3>X-Tudo + Batata P + Guaravita</h3>
+
+                <h3>
+                    X-Tudo + Batata P + Guaravita
+                </h3>
 
                 <p class="descricao">
-                    O combo perfeito para matar a fome! Um X-Tudo irresistível
-                    com pão macio, carne bovina, queijo, presunto, ovo, salada
-                    fresquinha, muita batata palha e aquele toque especial de
-                    ketchup, maionese, mostarda e barbecue. Acompanha uma porção
-                    de batata P douradinha e crocante e um Guaravita para completar.
+                    O combo perfeito para matar a fome! Um X-Tudo
+                    irresistível com pão macio, carne bovina, queijo,
+                    presunto, ovo, salada fresquinha, muita batata palha
+                    e aquele toque especial de ketchup, maionese,
+                    mostarda e barbecue. Acompanha uma porção de batata P
+                    douradinha e crocante e um Guaravita para completar.
                 </p>
 
-                <div class="preco">R$ 14,99</div>
+                <div class="preco">
+                    R$ 14,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Promoção X-Tudo + Batata P + Guaravita',14.99)">
+                    onclick="adicionarCarrinho('Promoção X-Tudo + Batata P + Guaravita',14.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1009,52 +1203,102 @@ footer p{
 
         <article class="produto" data-categoria="promocoes">
 
-            <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?auto=format&fit=crop&w=900&q=85">
+            <div class="combo-fotos">
+
+                <img
+                    src="https://images.unsplash.com/photo-1571091718767-18b5b1457add?auto=format&fit=crop&w=700&q=85"
+                    alt="Duplo Cheddar"
+                >
+
+                <img
+                    src="https://carrefourbrfood.vtexassets.com/arquivos/ids/213629771/B2-12-156892_1.jpg?v=639107539531470000"
+                    alt="Coca-Cola lata"
+                >
+
+            </div>
 
             <div class="produto-info">
-                <h3>Duplo Cheddar + Coca Lata</h3>
+
+                <h3>
+                    Duplo Cheddar + Coca Lata
+                </h3>
 
                 <p class="descricao">
-                    Pão macio, duas carnes bovinas suculentas, queijo cheddar
-                    derretido e cebola caramelizada, finalizado com aquele
-                    delicioso molho barbecue. Uma combinação irresistível de
-                    sabores, acompanhada de uma Coca-Cola lata.
+                    Pão macio, duas carnes bovinas suculentas,
+                    queijo cheddar derretido e cebola caramelizada,
+                    finalizado com aquele delicioso molho barbecue.
+                    Uma combinação irresistível de sabores,
+                    acompanhada de uma Coca-Cola lata.
                 </p>
 
-                <div class="preco">R$ 18,99</div>
+                <div class="preco">
+                    R$ 18,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Duplo Cheddar + Coca Lata',18.99)">
+                    onclick="adicionarCarrinho('Duplo Cheddar + Coca Lata',18.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
 
 
-        <!-- COMBOS -->
+        <!-- =========================
+             COMBOS
+        ========================== -->
 
         <article class="produto" data-categoria="combos">
 
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=900&q=85">
+            <div class="combo-fotos">
+
+                <img
+                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=85"
+                    alt="X-Tudo"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=85"
+                    alt="Batata frita"
+                >
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/OnionRings.JPG"
+                    alt="Anéis de cebola"
+                >
+
+                <img
+                    src="https://xioizekcyfmyxxklbvsd.supabase.co/storage/v1/object/public/menu-images/1779716457686-Nuggets.jpg"
+                    alt="Nuggets"
+                >
+
+            </div>
 
             <div class="produto-info">
-                <h3>Combo Individual X-Tudo</h3>
+
+                <h3>
+                    Combo Individual X-Tudo
+                </h3>
 
                 <p class="descricao">
-                    Um combo completo para matar a fome! Um X-Tudo com pão,
-                    carne bovina suculenta, ovo, bacon, queijo prato, presunto,
-                    salada e batata palha, acompanhado de ketchup, maionese,
-                    mostarda e barbecue. Para completar, batata frita
-                    douradinha com calabresa, 4 anéis de cebola e 4 nuggets.
+                    Um combo completo para matar a fome! Um X-Tudo
+                    com pão, carne bovina suculenta, ovo, bacon,
+                    queijo prato, presunto, salada e batata palha,
+                    acompanhado de ketchup, maionese, mostarda e barbecue.
+                    Para completar, batata frita douradinha com calabresa,
+                    4 anéis de cebola e 4 nuggets.
                 </p>
 
-                <div class="preco">R$ 29,99</div>
+                <div class="preco">
+                    R$ 29,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Combo Individual X-Tudo',29.99)">
+                    onclick="adicionarCarrinho('Combo Individual X-Tudo',29.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1062,26 +1306,54 @@ footer p{
 
         <article class="produto" data-categoria="combos">
 
-            <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=900&q=85">
+            <div class="combo-fotos">
+
+                <img
+                    src="https://images.unsplash.com/photo-1550547660-d9450f859349?auto=format&fit=crop&w=600&q=85"
+                    alt="X-Tudo"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=85"
+                    alt="Batata com calabresa"
+                >
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/OnionRings.JPG"
+                    alt="Anéis de cebola"
+                >
+
+                <img
+                    src="https://xioizekcyfmyxxklbvsd.supabase.co/storage/v1/object/public/menu-images/1779716457686-Nuggets.jpg"
+                    alt="Nuggets"
+                >
+
+            </div>
 
             <div class="produto-info">
-                <h3>Combo Duplo</h3>
+
+                <h3>
+                    Combo Duplo
+                </h3>
 
                 <p class="descricao">
-                    Um combo completo para matar a fome! 2 X-Tudo com pão,
-                    carne bovina suculenta, ovo, bacon, salada, queijo prato,
-                    presunto e batata palha, acompanhados de ketchup,
-                    maionese, mostarda e barbecue. Para completar,
-                    batata frita douradinha com calabresa,
+                    Um combo completo para matar a fome! 2 X-Tudo
+                    com pão, carne bovina suculenta, ovo, bacon,
+                    salada, queijo prato, presunto e batata palha,
+                    acompanhados de ketchup, maionese, mostarda e barbecue.
+                    Para completar, batata frita douradinha com calabresa,
                     5 anéis de cebola e 5 nuggets.
                 </p>
 
-                <div class="preco">R$ 38,99</div>
+                <div class="preco">
+                    R$ 38,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Combo Duplo',38.99)">
+                    onclick="adicionarCarrinho('Combo Duplo',38.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1089,46 +1361,87 @@ footer p{
 
         <article class="produto" data-categoria="combos">
 
-            <img src="https://images.unsplash.com/photo-1553979459-d2229ba7433b?auto=format&fit=crop&w=900&q=85">
+            <div class="combo-fotos">
+
+                <img
+                    src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=85"
+                    alt="X-Tudo"
+                >
+
+                <img
+                    src="https://images.unsplash.com/photo-1630384060421-cb20d0e0649d?auto=format&fit=crop&w=600&q=85"
+                    alt="Batata com calabresa"
+                >
+
+                <img
+                    src="https://commons.wikimedia.org/wiki/Special:Redirect/file/OnionRings.JPG"
+                    alt="Anéis de cebola"
+                >
+
+                <img
+                    src="https://xioizekcyfmyxxklbvsd.supabase.co/storage/v1/object/public/menu-images/1779716457686-Nuggets.jpg"
+                    alt="Nuggets"
+                >
+
+            </div>
 
             <div class="produto-info">
-                <h3>Combo Família</h3>
+
+                <h3>
+                    Combo Família
+                </h3>
 
                 <p class="descricao">
-                    Um combo completo para matar a fome! 4 X-Tudo com pão,
-                    carne bovina suculenta, ovo, bacon, salada, queijo prato,
-                    presunto e batata palha, acompanhados de ketchup,
-                    maionese, mostarda e barbecue. Para completar,
-                    batata frita douradinha com calabresa,
+                    Um combo completo para matar a fome! 4 X-Tudo
+                    com pão, carne bovina suculenta, ovo, bacon,
+                    salada, queijo prato, presunto e batata palha,
+                    acompanhados de ketchup, maionese, mostarda e barbecue.
+                    Para completar, batata frita douradinha com calabresa,
                     6 anéis de cebola e 6 nuggets.
                 </p>
 
-                <div class="preco">R$ 64,99</div>
+                <div class="preco">
+                    R$ 64,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Combo Família',64.99)">
+                    onclick="adicionarCarrinho('Combo Família',64.99)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
 
 
-        <!-- ADICIONAIS -->
+        <!-- =========================
+             ADICIONAIS
+        ========================== -->
 
         <article class="produto" data-categoria="adicionais">
 
-            <img src="https://images.unsplash.com/photo-1621852004158-f3bc188ace2d?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mayonnaise.JPG"
+                alt="Maionese"
+            >
 
             <div class="produto-info">
+
                 <h3>Maionese</h3>
-                <p class="descricao">Adicional de maionese.</p>
-                <div class="preco">R$ 3,00</div>
+
+                <p class="descricao">
+                    Adicional de maionese.
+                </p>
+
+                <div class="preco">
+                    R$ 3,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Maionese',3)">
+                    onclick="adicionarCarrinho('Maionese',3)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1136,17 +1449,28 @@ footer p{
 
         <article class="produto" data-categoria="adicionais">
 
-            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Barbecue_sauce.JPG"
+                alt="Molho barbecue"
+            >
 
             <div class="produto-info">
+
                 <h3>Barbecue</h3>
-                <p class="descricao">Adicional de barbecue.</p>
-                <div class="preco">R$ 3,00</div>
+
+                <p class="descricao">
+                    Adicional de barbecue.
+                </p>
+
+                <div class="preco">
+                    R$ 3,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Barbecue',3)">
+                    onclick="adicionarCarrinho('Barbecue',3)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1154,17 +1478,28 @@ footer p{
 
         <article class="produto" data-categoria="adicionais">
 
-            <img src="https://images.unsplash.com/photo-1585238342024-78d387f4a707?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Ketchup.jpg"
+                alt="Ketchup"
+            >
 
             <div class="produto-info">
+
                 <h3>Ketchup</h3>
-                <p class="descricao">Adicional de ketchup.</p>
-                <div class="preco">R$ 3,00</div>
+
+                <p class="descricao">
+                    Adicional de ketchup.
+                </p>
+
+                <div class="preco">
+                    R$ 3,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Ketchup',3)">
+                    onclick="adicionarCarrinho('Ketchup',3)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1172,17 +1507,28 @@ footer p{
 
         <article class="produto" data-categoria="adicionais">
 
-            <img src="https://images.unsplash.com/photo-1601050690117-94f5f6fa8bd7?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mustard_.jpg"
+                alt="Mostarda"
+            >
 
             <div class="produto-info">
+
                 <h3>Mostarda</h3>
-                <p class="descricao">Adicional de mostarda.</p>
-                <div class="preco">R$ 3,00</div>
+
+                <p class="descricao">
+                    Adicional de mostarda.
+                </p>
+
+                <div class="preco">
+                    R$ 3,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Mostarda',3)">
+                    onclick="adicionarCarrinho('Mostarda',3)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1190,17 +1536,28 @@ footer p{
 
         <article class="produto" data-categoria="adicionais">
 
-            <img src="https://images.unsplash.com/photo-1619021019680-1f6c8d6c4c0b?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Mayonnaise_verte.jpg"
+                alt="Molho verde"
+            >
 
             <div class="produto-info">
+
                 <h3>Molho Verde</h3>
-                <p class="descricao">Adicional de molho verde.</p>
-                <div class="preco">R$ 4,00</div>
+
+                <p class="descricao">
+                    Adicional de molho verde.
+                </p>
+
+                <div class="preco">
+                    R$ 4,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Molho Verde',4)">
+                    onclick="adicionarCarrinho('Molho Verde',4)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1208,17 +1565,28 @@ footer p{
 
         <article class="produto" data-categoria="adicionais">
 
-            <img src="https://images.unsplash.com/photo-1586190848861-99aa4a171e90?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/McDonald's_French_Fries_with_Cheddar_sauce.jpg"
+                alt="Molho cheddar"
+            >
 
             <div class="produto-info">
+
                 <h3>Cheddar</h3>
-                <p class="descricao">Adicional de molho cheddar.</p>
-                <div class="preco">R$ 5,00</div>
+
+                <p class="descricao">
+                    Adicional de molho cheddar.
+                </p>
+
+                <div class="preco">
+                    R$ 5,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Cheddar',5)">
+                    onclick="adicionarCarrinho('Cheddar',5)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
@@ -1226,43 +1594,64 @@ footer p{
 
         <article class="produto" data-categoria="adicionais">
 
-            <img src="https://images.unsplash.com/photo-1608039829572-78524f79c4c7?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://commons.wikimedia.org/wiki/Special:Redirect/file/Fried-egg.svg"
+                alt="Ovo frito"
+            >
 
             <div class="produto-info">
+
                 <h3>Adicional de Ovo</h3>
-                <p class="descricao">Adicional de ovo frito.</p>
-                <div class="preco">R$ 5,00</div>
+
+                <p class="descricao">
+                    Adicional de ovo frito.
+                </p>
+
+                <div class="preco">
+                    R$ 5,00
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Adicional de Ovo',5)">
+                    onclick="adicionarCarrinho('Adicional de Ovo',5)">
                     Adicionar
                 </button>
+
             </div>
 
         </article>
 
 
-        <!-- FRANGO ASSADO -->
+        <!-- =========================
+             FRANGO ASSADO
+        ========================== -->
 
         <article class="produto" data-categoria="frango">
 
-            <img src="https://images.unsplash.com/photo-1598103442097-8b74394b95c6?auto=format&fit=crop&w=900&q=85">
+            <img
+                src="https://instadelivery-public.nyc3.cdn.digitaloceanspaces.com/itens/17008723126561407805395_75_75.jpeg"
+                alt="Frango assado completo"
+            >
 
             <div class="produto-info">
 
-                <h3>Frango Assado Completo</h3>
+                <h3>
+                    Frango Assado Completo
+                </h3>
 
                 <p class="descricao">
-                    Frango assado douradinho, suculento, acompanhado de
-                    linguiça de churrasco, batatas, calabresas e uma deliciosa
-                    farofa crocante. Uma combinação irresistível, perfeita para
-                    aquele almoço caprichado e cheio de sabor.
+                    Frango assado douradinho, suculento, acompanhado
+                    de linguiça de churrasco, batatas, calabresas e
+                    uma deliciosa farofa crocante. Uma combinação
+                    irresistível, perfeita para aquele almoço caprichado
+                    e cheio de sabor.
                 </p>
 
-                <div class="preco">R$ 34,99</div>
+                <div class="preco">
+                    R$ 34,99
+                </div>
 
                 <button class="add-btn"
-                onclick="adicionarCarrinho('Frango Assado Completo',34.99)">
+                    onclick="adicionarCarrinho('Frango Assado Completo',34.99)">
                     Adicionar
                 </button>
 
@@ -1303,38 +1692,52 @@ footer p{
 
     <h3>VF Filhos Lanches</h3>
 
-    <p>📍 Estrada Luiz Mário da Rocha Lima, 1459</p>
+    <p>
+        📍 Estrada Luiz Mário da Rocha Lima, 1459
+    </p>
 
-    <p>🕐 Segunda a domingo — 10:00 às 00:00</p>
+    <p>
+        🕐 Segunda a domingo — 10:00 às 00:00
+    </p>
 
-    <p>📱 WhatsApp: (21) 98395-0843</p>
+    <p>
+        📱 WhatsApp: (21) 98395-0843
+    </p>
 
-    <p>© 2026 VF Filhos Lanches</p>
+    <p>
+        © 2026 VF Filhos Lanches
+    </p>
 
 </footer>
 
 
-<!-- OVERLAY -->
+<div
+    class="overlay"
+    id="overlay"
+    onclick="fecharCarrinho()">
+</div>
 
-<div class="overlay" id="overlay" onclick="fecharCarrinho()"></div>
 
-
-<!-- CARRINHO -->
-
-<aside class="carrinho" id="carrinho">
+<aside
+    class="carrinho"
+    id="carrinho">
 
     <div class="carrinho-header">
 
         <h2>🛒 Seu pedido</h2>
 
-        <button class="fechar" onclick="fecharCarrinho()">
+        <button
+            class="fechar"
+            onclick="fecharCarrinho()">
             ×
         </button>
 
     </div>
 
 
-    <div class="itens-carrinho" id="itensCarrinho">
+    <div
+        class="itens-carrinho"
+        id="itensCarrinho">
 
         <div class="vazio">
             Seu carrinho está vazio.
@@ -1355,7 +1758,9 @@ footer p{
 
     <div class="checkout">
 
-        <h3>📍 Dados da entrega</h3>
+        <h3>
+            📍 Dados da entrega
+        </h3>
 
         <input
             type="text"
@@ -1383,11 +1788,15 @@ footer p{
 
         <textarea
             id="observacao"
-            placeholder="Observação do pedido (opcional)"
-        ></textarea>
+            placeholder="Observação do pedido (opcional)">
+        </textarea>
 
-        <button class="finalizar" onclick="finalizarPedido()">
+        <button
+            class="finalizar"
+            onclick="finalizarPedido()">
+
             📲 Finalizar pedido pelo WhatsApp
+
         </button>
 
     </div>
@@ -1406,31 +1815,43 @@ let carrinho = [];
 
 function mostrarCategoria(categoria, botao){
 
-    document.querySelectorAll('.produto').forEach(produto => {
+    document
+        .querySelectorAll('.produto')
+        .forEach(produto => {
 
-        produto.style.display =
-            produto.dataset.categoria === categoria
-            ? 'block'
-            : 'none';
+            produto.style.display =
+                produto.dataset.categoria === categoria
+                ? 'block'
+                : 'none';
 
-    });
-
-
-    document.querySelectorAll('.info-categoria').forEach(info => {
-
-        info.style.display =
-            info.dataset.categoria === categoria
-            ? 'block'
-            : 'none';
-
-    });
+        });
 
 
-    document.querySelectorAll('.categorias button')
-    .forEach(btn => btn.classList.remove('ativa'));
+    document
+        .querySelectorAll('.info-categoria')
+        .forEach(info => {
+
+            info.style.display =
+                info.dataset.categoria === categoria
+                ? 'block'
+                : 'none';
+
+        });
+
+
+    document
+        .querySelectorAll('.categorias button')
+        .forEach(btn => {
+
+            btn.classList.remove('ativa');
+
+        });
+
 
     if(botao){
+
         botao.classList.add('ativa');
+
     }
 
 
@@ -1479,11 +1900,14 @@ function mostrarCategoria(categoria, botao){
     };
 
 
-    document.getElementById('tituloCategoria').textContent =
-        nomes[categoria][0];
+    document
+        .getElementById('tituloCategoria')
+        .textContent = nomes[categoria][0];
 
-    document.getElementById('subtituloCategoria').textContent =
-        nomes[categoria][1];
+
+    document
+        .getElementById('subtituloCategoria')
+        .textContent = nomes[categoria][1];
 
 }
 
@@ -1497,6 +1921,7 @@ function adicionarCarrinho(nome, preco){
     const existente =
         carrinho.find(item => item.nome === nome);
 
+
     if(existente){
 
         existente.quantidade++;
@@ -1504,12 +1929,15 @@ function adicionarCarrinho(nome, preco){
     }else{
 
         carrinho.push({
+
             nome:nome,
             preco:preco,
             quantidade:1
+
         });
 
     }
+
 
     atualizarCarrinho();
 
@@ -1536,6 +1964,7 @@ function diminuir(index){
         carrinho.splice(index,1);
 
     }
+
 
     atualizarCarrinho();
 
@@ -1578,6 +2007,7 @@ function atualizarCarrinho(){
 
 
     let total = 0;
+
     let quantidadeTotal = 0;
 
 
@@ -1589,6 +2019,7 @@ function atualizarCarrinho(){
         const subtotal =
             item.preco * item.quantidade;
 
+
         total += subtotal;
 
         quantidadeTotal += item.quantidade;
@@ -1597,26 +2028,34 @@ function atualizarCarrinho(){
         const div =
             document.createElement('div');
 
-        div.className = 'item-carrinho';
+
+        div.className =
+            'item-carrinho';
 
 
         div.innerHTML = `
 
-            <h4>${item.nome}</h4>
+            <h4>
+                ${item.nome}
+            </h4>
 
             <p>
-                R$ ${item.preco.toFixed(2).replace('.',',')}
-                cada
+                R$ ${item.preco
+                    .toFixed(2)
+                    .replace('.',',')} cada
             </p>
 
             <p>
                 Subtotal:
-                R$ ${subtotal.toFixed(2).replace('.',',')}
+                R$ ${subtotal
+                    .toFixed(2)
+                    .replace('.',',')}
             </p>
 
             <div class="controles">
 
-                <button onclick="diminuir(${index})">
+                <button
+                    onclick="diminuir(${index})">
                     −
                 </button>
 
@@ -1624,7 +2063,8 @@ function atualizarCarrinho(){
                     ${item.quantidade}
                 </strong>
 
-                <button onclick="aumentar(${index})">
+                <button
+                    onclick="aumentar(${index})">
                     +
                 </button>
 
@@ -1647,6 +2087,7 @@ function atualizarCarrinho(){
     quantidade.textContent =
         quantidadeTotal;
 
+
     totalElemento.textContent =
         total.toFixed(2).replace('.',',');
 
@@ -1658,6 +2099,7 @@ function abrirCarrinho(){
     document
         .getElementById('carrinho')
         .classList.add('aberto');
+
 
     document
         .getElementById('overlay')
@@ -1671,6 +2113,7 @@ function fecharCarrinho(){
     document
         .getElementById('carrinho')
         .classList.remove('aberto');
+
 
     document
         .getElementById('overlay')
@@ -1695,19 +2138,28 @@ function finalizarPedido(){
 
 
     const endereco =
-        document.getElementById('endereco').value.trim();
+        document.getElementById('endereco')
+        .value.trim();
+
 
     const numeroCasa =
-        document.getElementById('numeroCasa').value.trim();
+        document.getElementById('numeroCasa')
+        .value.trim();
+
 
     const referencia =
-        document.getElementById('referencia').value.trim();
+        document.getElementById('referencia')
+        .value.trim();
+
 
     const whatsappCliente =
-        document.getElementById('whatsappCliente').value.trim();
+        document.getElementById('whatsappCliente')
+        .value.trim();
+
 
     const observacao =
-        document.getElementById('observacao').value.trim();
+        document.getElementById('observacao')
+        .value.trim();
 
 
     if(!endereco){
@@ -1753,6 +2205,7 @@ function finalizarPedido(){
         const subtotal =
             item.preco * item.quantidade;
 
+
         total += subtotal;
 
 
@@ -1769,17 +2222,22 @@ function finalizarPedido(){
     mensagem +=
         '*📍 DADOS DA ENTREGA:*\n';
 
+
     mensagem +=
         `Endereço: ${endereco}\n`;
+
 
     mensagem +=
         `Número: ${numeroCasa}\n`;
 
+
     mensagem +=
         `Referência: ${referencia || 'Não informado'}\n`;
 
+
     mensagem +=
         `WhatsApp do cliente: ${whatsappCliente}\n`;
+
 
     mensagem +=
         `Observação: ${observacao || 'Nenhuma'}\n\n`;
@@ -1811,9 +2269,10 @@ mostrarCategoria(
     document.querySelector('.categorias button')
 );
 
+
 atualizarCarrinho();
 
 </script>
 
 </body>
-</html>
+                    </html>
