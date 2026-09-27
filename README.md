@@ -1,2 +1,2 @@
-# reino-do-lanche
-Cardápio digital do Reino do Lanche
+# vf-filhos-lanches
+Cardápio digital da vf filhos lanches
