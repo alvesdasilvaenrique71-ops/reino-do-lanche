@@ -3,1537 +3,994 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#0b0b0d">
-<meta name="description" content="VF Filhos Lanches - Hambúrgueres, lanches e muito mais.">
 <title>VF Filhos Lanches</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:Arial,Helvetica,sans-serif;
-}
-
-:root{
-    --bg:#080809;
-    --card:#131316;
-    --card2:#1b1b20;
-    --text:#fff;
-    --muted:#aaa;
-    --primary:#e50914;
-    --primary-dark:#b8060f;
-    --green:#20c866;
-    --pink:#e1306c;
-}
-
-html{
-    scroll-behavior:smooth;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
 }
 
 body{
-    background:var(--bg);
-    color:var(--text);
-    overflow-x:hidden;
+  background:#f5f5f5;
+  color:#111;
 }
 
-/* ================= HEADER ================= */
+button{
+  border:0;
+  cursor:pointer;
+}
 
 header{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:rgba(8,8,9,.96);
-    backdrop-filter:blur(12px);
-    border-bottom:1px solid #242429;
+  background:#000;
+  color:#fff;
+  padding:15px 5%;
+  position:sticky;
+  top:0;
+  z-index:1000;
 }
 
-.header-inner{
-    max-width:1200px;
-    margin:auto;
-    min-height:76px;
-    padding:10px 18px;
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:15px;
+.header-content{
+  max-width:1200px;
+  margin:auto;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+
+.logo-area{
+  display:flex;
+  align-items:center;
+  gap:12px;
 }
 
 .logo{
-    display:flex;
-    align-items:center;
-    gap:12px;
-    min-width:0;
+  width:55px;
+  height:55px;
+  border-radius:50%;
+  object-fit:cover;
+  background:#fff;
 }
 
-.logo img{
-    width:52px;
-    height:52px;
-    object-fit:cover;
-    border-radius:50%;
-    border:2px solid #fff;
-    background:#222;
+.logo-area h1{
+  font-size:20px;
 }
 
-.logo-text{
-    min-width:0;
+.logo-area span{
+  font-size:12px;
+  color:#bbb;
 }
-
-.logo-text h1{
-    font-size:19px;
-    white-space:nowrap;
-}
-
-.logo-text p{
-    color:#aaa;
-    font-size:11px;
-    margin-top:3px;
-}
-
-.info{
-    display:flex;
-    align-items:center;
-    gap:18px;
-    font-size:12px;
-}
-
-.info div{
-    display:flex;
-    flex-direction:column;
-    gap:3px;
-}
-
-.info strong{
-    color:#fff;
-}
-
-.info span{
-    color:#aaa;
-}
-
-/* MENU */
 
 .menu-btn{
-    width:45px;
-    height:45px;
-    border:0;
-    border-radius:12px;
-    background:#1b1b20;
-    color:white;
-    font-size:25px;
-    cursor:pointer;
+  background:#fff;
+  color:#000;
+  width:45px;
+  height:45px;
+  border-radius:12px;
+  font-size:23px;
 }
 
-.menu-btn:hover{
-    background:#28282e;
+.menu{
+  position:fixed;
+  top:0;
+  right:-320px;
+  width:300px;
+  height:100vh;
+  background:#111;
+  color:#fff;
+  z-index:2000;
+  padding:25px;
+  transition:.3s;
+  box-shadow:-5px 0 30px #0008;
 }
 
-/* ================= DRAWER ================= */
-
-.overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    z-index:1998;
-    display:none;
+.menu.open{
+  right:0;
 }
 
-.overlay.active{
-    display:block;
+.menu-close{
+  background:#fff;
+  color:#000;
+  width:40px;
+  height:40px;
+  border-radius:10px;
+  float:right;
+  font-size:20px;
 }
 
-.drawer{
-    position:fixed;
-    top:0;
-    right:-330px;
-    width:310px;
-    max-width:90%;
-    height:100vh;
-    background:#101014;
-    z-index:1999;
-    padding:25px;
-    transition:.3s ease;
-    box-shadow:-10px 0 35px rgba(0,0,0,.5);
+.menu h2{
+  margin-top:60px;
+  margin-bottom:25px;
 }
 
-.drawer.active{
-    right:0;
+.menu a,
+.menu button{
+  width:100%;
+  display:block;
+  padding:15px;
+  margin:10px 0;
+  border-radius:12px;
+  text-decoration:none;
+  color:#fff;
+  font-weight:bold;
+  text-align:left;
 }
 
-.drawer-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:28px;
+.whatsapp{
+  background:#20c463;
 }
 
-.drawer-head h2{
-    font-size:22px;
+.instagram{
+  background:#e1306c;
 }
 
-.close-btn{
-    width:40px;
-    height:40px;
-    border:0;
-    border-radius:10px;
-    background:#25252b;
-    color:#fff;
-    font-size:20px;
-    cursor:pointer;
+.cupons{
+  background:#d90000;
 }
 
-.menu-options{
-    display:flex;
-    flex-direction:column;
-    gap:13px;
+.admin{
+  background:#333;
 }
-
-.menu-option{
-    width:100%;
-    border:0;
-    border-radius:13px;
-    padding:16px;
-    color:#fff;
-    font-size:16px;
-    font-weight:bold;
-    cursor:pointer;
-    text-align:left;
-    transition:.2s;
-}
-
-.menu-option:hover{
-    transform:translateX(-3px);
-    filter:brightness(1.1);
-}
-
-/* CORES DOS BOTÕES */
-
-.whatsapp-btn{
-    background:#20c866;
-}
-
-.instagram-btn{
-    background:#e1306c;
-}
-
-.cupom-btn{
-    background:#e50914;
-}
-
-.admin-btn{
-    background:#25252b;
-    border:1px solid #3b3b42;
-}
-
-.menu-option small{
-    display:block;
-    font-size:11px;
-    font-weight:normal;
-    opacity:.85;
-    margin-top:4px;
-}
-
-/* ================= HERO ================= */
 
 .hero{
-    min-height:570px;
-    display:flex;
-    align-items:center;
-    position:relative;
-    overflow:hidden;
-    background:
-        linear-gradient(90deg,rgba(0,0,0,.95),rgba(0,0,0,.65),rgba(0,0,0,.25)),
-        url("imagens/hamburguer1.jpeg") center/cover;
+  background:#000;
+  color:#fff;
+  min-height:390px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:40px 5%;
 }
 
 .hero-content{
-    max-width:1200px;
-    width:100%;
-    margin:auto;
-    padding:70px 20px;
-}
-
-.badge{
-    display:inline-block;
-    background:rgba(229,9,20,.15);
-    border:1px solid rgba(229,9,20,.5);
-    color:#ff525b;
-    padding:8px 13px;
-    border-radius:30px;
-    font-size:12px;
-    font-weight:bold;
-    margin-bottom:18px;
+  max-width:1200px;
+  width:100%;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:40px;
+  align-items:center;
 }
 
 .hero h2{
-    max-width:650px;
-    font-size:clamp(38px,7vw,72px);
-    line-height:1;
-    margin-bottom:20px;
-}
-
-.hero h2 span{
-    color:#ff2934;
+  font-size:clamp(35px,5vw,65px);
+  margin-bottom:15px;
 }
 
 .hero p{
-    max-width:580px;
-    color:#ddd;
-    font-size:17px;
-    line-height:1.6;
-    margin-bottom:28px;
+  color:#ccc;
+  font-size:18px;
+  margin-bottom:25px;
 }
 
-.hero-buttons{
-    display:flex;
-    gap:12px;
-    flex-wrap:wrap;
+.hero-btn{
+  background:#fff;
+  color:#000;
+  padding:15px 25px;
+  border-radius:12px;
+  font-weight:bold;
+  font-size:16px;
 }
 
-.btn{
-    border:0;
-    border-radius:12px;
-    padding:15px 22px;
-    font-weight:bold;
-    cursor:pointer;
-    text-decoration:none;
-    display:inline-flex;
-    align-items:center;
-    justify-content:center;
+.hero-img{
+  width:100%;
+  max-height:330px;
+  object-fit:cover;
+  border-radius:25px;
 }
 
-.btn-primary{
-    background:var(--primary);
-    color:#fff;
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:35px 5%;
 }
 
-.btn-secondary{
-    background:#fff;
-    color:#111;
+.search{
+  width:100%;
+  padding:17px;
+  border:1px solid #ddd;
+  border-radius:15px;
+  font-size:16px;
+  margin-bottom:25px;
 }
 
-/* ================= SECTIONS ================= */
+.categories{
+  display:flex;
+  gap:10px;
+  overflow-x:auto;
+  padding-bottom:15px;
+}
 
-section{
-    max-width:1200px;
-    margin:auto;
-    padding:70px 20px;
+.category{
+  background:#fff;
+  border:1px solid #ddd;
+  padding:12px 18px;
+  border-radius:30px;
+  white-space:nowrap;
+  font-weight:bold;
+}
+
+.category.active{
+  background:#000;
+  color:#fff;
 }
 
 .section-title{
-    text-align:center;
-    margin-bottom:35px;
-}
-
-.section-title h2{
-    font-size:34px;
-    margin-bottom:10px;
-}
-
-.section-title p{
-    color:#999;
-}
-
-/* BENEFÍCIOS */
-
-.benefits{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:18px;
-}
-
-.benefit{
-    background:var(--card);
-    border:1px solid #25252b;
-    padding:25px;
-    border-radius:18px;
-}
-
-.benefit-icon{
-    font-size:30px;
-    margin-bottom:13px;
-}
-
-.benefit h3{
-    margin-bottom:7px;
-}
-
-.benefit p{
-    color:#999;
-    font-size:14px;
-    line-height:1.5;
-}
-
-/* ================= CARDÁPIO ================= */
-
-.menu-filter{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    flex-wrap:wrap;
-    margin-bottom:30px;
-}
-
-.filter{
-    border:1px solid #33343a;
-    background:#151519;
-    color:#ddd;
-    padding:10px 15px;
-    border-radius:30px;
-    cursor:pointer;
-}
-
-.filter.active,
-.filter:hover{
-    background:var(--primary);
-    border-color:var(--primary);
-    color:#fff;
+  font-size:28px;
+  margin:25px 0 20px;
 }
 
 .products{
-    display:grid;
-    grid-template-columns:repeat(4,1fr);
-    gap:18px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
 .product{
-    background:var(--card);
-    border:1px solid #25252b;
-    border-radius:18px;
-    overflow:hidden;
-    transition:.25s;
+  background:#fff;
+  border-radius:18px;
+  overflow:hidden;
+  box-shadow:0 5px 20px #00000012;
+  transition:.2s;
 }
 
 .product:hover{
-    transform:translateY(-5px);
-    border-color:#44444b;
+  transform:translateY(-3px);
 }
 
-.product-img{
-    width:100%;
-    height:190px;
-    object-fit:cover;
-    display:block;
-    background:#222;
+.product img{
+  width:100%;
+  height:190px;
+  object-fit:cover;
 }
 
-.product-body{
-    padding:17px;
+.product-info{
+  padding:18px;
 }
 
-.product-body h3{
-    margin-bottom:7px;
+.product h3{
+  font-size:20px;
+  margin-bottom:7px;
 }
 
-.product-body p{
-    color:#999;
-    font-size:13px;
-    min-height:38px;
-    line-height:1.4;
-}
-
-.product-bottom{
-    display:flex;
-    align-items:center;
-    justify-content:space-between;
-    gap:8px;
-    margin-top:15px;
+.product p{
+  color:#777;
+  font-size:14px;
+  min-height:38px;
 }
 
 .price{
-    font-size:18px;
-    font-weight:bold;
+  font-size:20px;
+  font-weight:bold;
+  margin:12px 0;
 }
 
-.add{
-    border:0;
-    background:var(--primary);
-    color:#fff;
-    border-radius:10px;
-    padding:10px 13px;
-    font-weight:bold;
-    cursor:pointer;
+.add-btn{
+  width:100%;
+  padding:13px;
+  background:#000;
+  color:#fff;
+  border-radius:12px;
+  font-weight:bold;
 }
 
-/* ================= SOBRE ================= */
-
-.about{
-    background:#101014;
-    max-width:none;
+.features{
+  background:#111;
+  color:#fff;
 }
 
-.about-inner{
-    max-width:1200px;
-    margin:auto;
-    display:grid;
-    grid-template-columns:1fr 1fr;
-    gap:40px;
-    align-items:center;
-    padding:70px 20px;
+.feature-grid{
+  max-width:1200px;
+  margin:auto;
+  padding:45px 5%;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
 }
 
-.about h2{
-    font-size:38px;
-    margin-bottom:15px;
+.feature{
+  background:#1d1d1d;
+  padding:25px;
+  border-radius:18px;
 }
 
-.about p{
-    color:#aaa;
-    line-height:1.7;
+.feature h3{
+  margin-bottom:8px;
 }
 
-.about-card{
-    background:#17171c;
-    border:1px solid #292930;
-    padding:28px;
-    border-radius:20px;
+.feature p{
+  color:#bbb;
 }
 
-.about-card div{
-    margin-bottom:20px;
-}
-
-.about-card div:last-child{
-    margin-bottom:0;
-}
-
-.about-card strong{
-    display:block;
-    margin-bottom:5px;
-}
-
-.about-card span{
-    color:#999;
-}
-
-/* ================= CUPONS ================= */
-
-.coupon-box{
-    max-width:700px;
-    margin:auto;
-    background:linear-gradient(145deg,#17171b,#101014);
-    border:1px solid #303038;
-    border-radius:22px;
-    padding:30px;
-    text-align:center;
-}
-
-.coupon-box h3{
-    font-size:26px;
-    margin-bottom:8px;
-}
-
-.coupon-box p{
-    color:#999;
-    margin-bottom:20px;
-}
-
-.coupon-input{
-    display:flex;
-    gap:8px;
-}
-
-.coupon-input input{
-    flex:1;
-    min-width:0;
-    border:1px solid #33343a;
-    background:#09090b;
-    color:#fff;
-    border-radius:10px;
-    padding:14px;
-    outline:none;
-}
-
-.coupon-input button{
-    border:0;
-    background:var(--primary);
-    color:#fff;
-    padding:14px 18px;
-    border-radius:10px;
-    font-weight:bold;
-    cursor:pointer;
-}
-
-.coupon-message{
-    margin-top:13px;
-    min-height:20px;
-    font-size:13px;
-}
-
-/* ================= FOOTER ================= */
-
-footer{
-    border-top:1px solid #25252b;
-    padding:30px 20px;
-    text-align:center;
-    color:#888;
-    font-size:13px;
-}
-
-footer strong{
-    color:#fff;
-}
-
-/* ================= CARRINHO ================= */
-
-.cart-float{
-    position:fixed;
-    right:20px;
-    bottom:20px;
-    width:62px;
-    height:62px;
-    border-radius:50%;
-    border:0;
-    background:var(--primary);
-    color:#fff;
-    font-size:25px;
-    cursor:pointer;
-    z-index:1500;
-    box-shadow:0 8px 30px rgba(229,9,20,.35);
+.cart-floating{
+  position:fixed;
+  right:20px;
+  bottom:20px;
+  background:#000;
+  color:#fff;
+  padding:16px 22px;
+  border-radius:50px;
+  z-index:900;
+  box-shadow:0 8px 25px #0005;
+  font-weight:bold;
 }
 
 .cart-count{
-    position:absolute;
-    top:-4px;
-    right:-3px;
-    background:#fff;
-    color:#111;
-    width:22px;
-    height:22px;
-    border-radius:50%;
-    font-size:12px;
-    font-weight:bold;
-    display:flex;
-    align-items:center;
-    justify-content:center;
+  background:#fff;
+  color:#000;
+  border-radius:50%;
+  padding:3px 7px;
+  margin-left:5px;
 }
 
-.cart-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.7);
-    z-index:2998;
-    display:none;
+.overlay{
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0008;
+  z-index:1500;
 }
 
-.cart-overlay.active{
-    display:block;
+.overlay.show{
+  display:block;
 }
 
-.cart{
-    position:fixed;
-    right:-430px;
-    top:0;
-    width:420px;
-    max-width:95%;
-    height:100vh;
-    background:#101014;
-    z-index:2999;
-    transition:.3s;
-    display:flex;
-    flex-direction:column;
-    box-shadow:-10px 0 35px rgba(0,0,0,.5);
+.drawer{
+  position:fixed;
+  right:-450px;
+  top:0;
+  width:min(450px,100%);
+  height:100vh;
+  background:#fff;
+  z-index:1600;
+  transition:.3s;
+  overflow-y:auto;
+  padding:25px;
 }
 
-.cart.active{
-    right:0;
+.drawer.open{
+  right:0;
 }
 
-.cart-head{
-    padding:20px;
-    border-bottom:1px solid #29292f;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
+.drawer-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:25px;
 }
 
-.cart-head button{
-    width:38px;
-    height:38px;
-    border:0;
-    border-radius:10px;
-    background:#25252b;
-    color:#fff;
-    cursor:pointer;
-}
-
-.cart-items{
-    flex:1;
-    overflow-y:auto;
-    padding:15px;
-}
-
-.empty-cart{
-    text-align:center;
-    color:#888;
-    padding:60px 20px;
+.close{
+  background:#eee;
+  width:40px;
+  height:40px;
+  border-radius:10px;
 }
 
 .cart-item{
-    background:#18181d;
-    border:1px solid #28282e;
-    border-radius:14px;
-    padding:13px;
-    margin-bottom:10px;
+  display:flex;
+  gap:12px;
+  padding:15px 0;
+  border-bottom:1px solid #ddd;
 }
 
-.cart-item-top{
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
+.cart-item img{
+  width:70px;
+  height:70px;
+  object-fit:cover;
+  border-radius:10px;
 }
 
-.cart-item-name{
-    font-weight:bold;
-}
-
-.cart-item-price{
-    color:#ff4a53;
-    font-weight:bold;
-}
-
-.cart-controls{
-    display:flex;
-    align-items:center;
-    gap:10px;
-    margin-top:12px;
+.cart-item-info{
+  flex:1;
 }
 
 .qty{
-    width:30px;
-    height:30px;
-    border:0;
-    border-radius:8px;
-    background:#292930;
-    color:#fff;
-    cursor:pointer;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  margin-top:8px;
+}
+
+.qty button{
+  background:#000;
+  color:#fff;
+  width:28px;
+  height:28px;
+  border-radius:7px;
 }
 
 .remove{
-    margin-left:auto;
-    border:0;
-    background:none;
-    color:#ff4b55;
-    cursor:pointer;
+  color:#d00;
+  background:none;
+  font-size:12px;
 }
 
-.cart-bottom{
-    border-top:1px solid #29292f;
-    padding:18px;
+.summary{
+  margin-top:25px;
+  border-top:2px solid #000;
+  padding-top:20px;
 }
 
-.total-row{
-    display:flex;
-    justify-content:space-between;
-    margin-bottom:8px;
-    color:#aaa;
+.summary-row{
+  display:flex;
+  justify-content:space-between;
+  margin:10px 0;
 }
 
-.total-row.final{
-    color:#fff;
-    font-size:20px;
-    font-weight:bold;
-    margin-top:10px;
+.total{
+  font-size:23px;
+  font-weight:bold;
 }
 
-.checkout{
-    width:100%;
-    margin-top:15px;
-    border:0;
-    background:#20c866;
-    color:#fff;
-    padding:15px;
-    border-radius:12px;
-    font-weight:bold;
-    cursor:pointer;
+.checkout-btn{
+  width:100%;
+  background:#000;
+  color:#fff;
+  padding:16px;
+  border-radius:12px;
+  margin-top:20px;
+  font-size:16px;
+  font-weight:bold;
 }
 
-/* ================= MODAIS ================= */
-
-.modal-overlay{
-    position:fixed;
-    inset:0;
-    background:rgba(0,0,0,.75);
-    z-index:4000;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
+.coupon-box{
+  display:flex;
+  gap:8px;
+  margin-top:15px;
 }
 
-.modal-overlay.active{
-    display:flex;
+.coupon-box input{
+  flex:1;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:10px;
+}
+
+.coupon-box button{
+  background:#000;
+  color:#fff;
+  padding:13px;
+  border-radius:10px;
 }
 
 .modal{
-    width:100%;
-    max-width:520px;
-    max-height:90vh;
-    overflow-y:auto;
-    background:#121216;
-    border:1px solid #303038;
-    border-radius:20px;
-    padding:25px;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:#0009;
+  z-index:3000;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
 }
 
-.modal-head{
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    margin-bottom:20px;
+.modal.show{
+  display:flex;
 }
 
-.modal-close{
-    border:0;
-    background:#292930;
-    color:#fff;
-    width:38px;
-    height:38px;
-    border-radius:10px;
-    cursor:pointer;
+.modal-content{
+  background:#fff;
+  width:min(500px,100%);
+  max-height:90vh;
+  overflow-y:auto;
+  border-radius:20px;
+  padding:25px;
+}
+
+.modal-header{
+  display:flex;
+  justify-content:space-between;
+  margin-bottom:20px;
 }
 
 .form-group{
-    margin-bottom:14px;
+  margin-bottom:15px;
 }
 
 .form-group label{
-    display:block;
-    font-size:13px;
-    color:#bbb;
-    margin-bottom:6px;
+  display:block;
+  margin-bottom:6px;
+  font-weight:bold;
 }
 
-.form-group input{
-    width:100%;
-    padding:13px;
-    background:#09090b;
-    border:1px solid #34343a;
-    border-radius:10px;
-    color:#fff;
-    outline:none;
+.form-group input,
+.form-group select,
+.form-group textarea{
+  width:100%;
+  padding:13px;
+  border:1px solid #ccc;
+  border-radius:10px;
 }
 
-.modal-action{
-    width:100%;
-    padding:14px;
-    border:0;
-    border-radius:10px;
-    background:var(--primary);
-    color:#fff;
-    font-weight:bold;
-    cursor:pointer;
+.form-group textarea{
+  min-height:80px;
+  resize:vertical;
 }
 
-.admin-list{
-    margin-top:25px;
+.payment{
+  display:grid;
+  gap:10px;
 }
 
-.admin-coupon{
-    background:#1b1b20;
-    padding:14px;
-    border-radius:12px;
-    margin-bottom:10px;
-    display:flex;
-    justify-content:space-between;
-    gap:10px;
-    align-items:center;
+.payment label{
+  border:1px solid #ddd;
+  padding:13px;
+  border-radius:10px;
 }
 
-.delete-coupon{
-    border:0;
-    background:#e50914;
-    color:#fff;
-    padding:8px 10px;
-    border-radius:8px;
-    cursor:pointer;
+footer{
+  background:#000;
+  color:#fff;
+  text-align:center;
+  padding:35px 20px;
+  margin-top:40px;
 }
 
-/* ================= RESPONSIVO ================= */
-
-@media(max-width:1000px){
-    .products{
-        grid-template-columns:repeat(3,1fr);
-    }
-
-    .info{
-        display:none;
-    }
+footer p{
+  color:#aaa;
+  margin-top:8px;
 }
 
-@media(max-width:700px){
-    .header-inner{
-        min-height:68px;
-    }
-
-    .logo img{
-        width:44px;
-        height:44px;
-    }
-
-    .logo-text h1{
-        font-size:16px;
-    }
-
-    .logo-text p{
-        font-size:9px;
-    }
-
-    .hero{
-        min-height:530px;
-    }
-
-    .hero-content{
-        padding:60px 20px;
-    }
-
-    .hero h2{
-        font-size:45px;
-    }
-
-    .benefits{
-        grid-template-columns:1fr;
-    }
-
-    .products{
-        grid-template-columns:repeat(2,1fr);
-        gap:12px;
-    }
-
-    .product-img{
-        height:150px;
-    }
-
-    .product-body{
-        padding:12px;
-    }
-
-    .product-body p{
-        font-size:12px;
-    }
-
-    .price{
-        font-size:15px;
-    }
-
-    .add{
-        padding:8px 10px;
-    }
-
-    .about-inner{
-        grid-template-columns:1fr;
-    }
-
-    section{
-        padding:55px 15px;
-    }
+.empty{
+  text-align:center;
+  padding:40px;
+  color:#777;
 }
 
-@media(max-width:430px){
-    .products{
-        grid-template-columns:1fr;
-    }
+@media(max-width:800px){
+  .hero-content{
+    grid-template-columns:1fr;
+  }
 
-    .product-img{
-        height:200px;
-    }
+  .hero-img{
+    max-height:250px;
+  }
 
-    .coupon-input{
-        flex-direction:column;
-    }
+  .products{
+    grid-template-columns:repeat(2,1fr);
+  }
 
-    .hero h2{
-        font-size:39px;
-    }
+  .feature-grid{
+    grid-template-columns:1fr;
+  }
+}
+
+@media(max-width:520px){
+  .products{
+    grid-template-columns:1fr;
+  }
+
+  .logo-area h1{
+    font-size:16px;
+  }
 }
 </style>
 </head>
 
 <body>
 
-<!-- ================= HEADER ================= -->
-
 <header>
-    <div class="header-inner">
+  <div class="header-content">
 
-        <div class="logo">
-            <img src="imagens/logo.jpeg" alt="Logo VF Filhos Lanches">
-
-            <div class="logo-text">
-                <h1>VF Filhos Lanches</h1>
-                <p>Qualidade e sabor em cada lanche</p>
-            </div>
-        </div>
-
-        <div class="info">
-            <div>
-                <strong>📍 Endereço</strong>
-                <span>Estrada Luiz Mário da Rocha Lima, 1459</span>
-            </div>
-
-            <div>
-                <strong>🕐 Funcionamento</strong>
-                <span>10:00 às 00:00</span>
-            </div>
-        </div>
-
-        <button class="menu-btn" onclick="openMenu()" aria-label="Abrir menu">
-            ☰
-        </button>
-
+    <div class="logo-area">
+      <img src="imagens/logo.jpeg" class="logo" alt="VF Filhos Lanches">
+      <div>
+        <h1>VF FILHOS LANCHES</h1>
+        <span>Estrada Luiz Mário da Rocha Lima, 1459</span>
+      </div>
     </div>
+
+    <button class="menu-btn" onclick="abrirMenu()">☰</button>
+
+  </div>
 </header>
 
-<!-- ================= MENU HAMBÚRGUER ================= -->
+<!-- MENU -->
+<div class="menu" id="menu">
 
-<div class="overlay" id="menuOverlay" onclick="closeMenu()"></div>
+  <button class="menu-close" onclick="fecharMenu()">✕</button>
 
-<aside class="drawer" id="drawer">
+  <h2>Menu</h2>
 
-    <div class="drawer-head">
-        <h2>Menu</h2>
+  <a class="whatsapp"
+     href="https://wa.me/5521983950843"
+     target="_blank">
+     💬 WhatsApp
+  </a>
 
-        <button class="close-btn" onclick="closeMenu()">
-            ✕
-        </button>
-    </div>
+  <a class="instagram"
+     href="https://www.instagram.com/vf_filhoslanches?stkn=aGVnYjFycWo4YXgz"
+     target="_blank">
+     📸 Instagram
+  </a>
 
-    <div class="menu-options">
+  <button class="cupons" onclick="abrirCupons()">
+     🎟️ Cupons
+  </button>
 
-        <button class="menu-option whatsapp-btn" onclick="openWhatsApp()">
-            🟢 WhatsApp
-            <small>Faça seu pedido pelo WhatsApp</small>
-        </button>
-
-        <button class="menu-option instagram-btn" onclick="openInstagram()">
-            📸 Instagram
-            <small>Acompanhe a VF Filhos Lanches</small>
-        </button>
-
-        <button class="menu-option cupom-btn" onclick="goCoupons()">
-            🎟️ Cupons
-            <small>Confira seus descontos</small>
-        </button>
-
-        <button class="menu-option admin-btn" onclick="openAdminLogin()">
-            ⚙️ Administrador
-            <small>Gerenciar cupons</small>
-        </button>
-
-    </div>
-
-</aside>
-
-<!-- ================= HERO ================= -->
-
-<div class="hero">
-
-    <div class="hero-content">
-
-        <span class="badge">
-            🍔 LANCHES FEITOS PARA VOCÊ
-        </span>
-
-        <h2>
-            Seu lanche.<br>
-            Seu momento.<br>
-            <span>Seu sabor.</span>
-        </h2>
-
-        <p>
-            Hambúrgueres e lanches preparados com muito sabor
-            para deixar seu pedido ainda melhor.
-        </p>
-
-        <div class="hero-buttons">
-
-            <a href="#cardapio" class="btn btn-primary">
-                🍔 Ver cardápio
-            </a>
-
-            <button class="btn btn-secondary" onclick="openWhatsApp()">
-                📱 Pedir pelo WhatsApp
-            </button>
-
-        </div>
-
-    </div>
+  <button class="admin" onclick="abrirAdmin()">
+     ⚙️ Administrador
+  </button>
 
 </div>
 
-<!-- ================= BENEFÍCIOS ================= -->
+<!-- HERO -->
+<section class="hero">
 
-<section>
+  <div class="hero-content">
 
-    <div class="section-title">
-        <h2>Por que pedir na VF?</h2>
-        <p>Qualidade em cada detalhe do seu pedido.</p>
+    <div>
+      <h2>Seu lanche.<br>Do seu jeito.</h2>
+
+      <p>
+        Hambúrgueres, combos e muito sabor.
+        Faça seu pedido online de forma rápida e fácil.
+      </p>
+
+      <button class="hero-btn"
+              onclick="document.getElementById('cardapio').scrollIntoView({behavior:'smooth'})">
+        🍔 Ver cardápio
+      </button>
     </div>
 
-    <div class="benefits">
-
-        <div class="benefit">
-            <div class="benefit-icon">🍔</div>
-            <h3>Lanches caprichados</h3>
-            <p>Preparados para entregar muito sabor em cada mordida.</p>
-        </div>
-
-        <div class="benefit">
-            <div class="benefit-icon">⚡</div>
-            <h3>Pedido fácil</h3>
-            <p>Monte seu carrinho e envie seu pedido rapidamente pelo WhatsApp.</p>
-        </div>
-
-        <div class="benefit">
-            <div class="benefit-icon">❤️</div>
-            <h3>Feito com carinho</h3>
-            <p>Seu pedido preparado com atenção para você aproveitar.</p>
-        </div>
-
-    </div>
+    <img src="imagens/hamburguer1.jpeg"
+         class="hero-img"
+         alt="Hambúrguer VF Filhos">
+  </div>
 
 </section>
 
-<!-- ================= CARDÁPIO ================= -->
+<!-- CARDÁPIO -->
+<main class="container" id="cardapio">
 
-<section id="cardapio">
+  <input
+    type="text"
+    id="search"
+    class="search"
+    placeholder="🔎 Procurar um lanche..."
+    oninput="renderProdutos()"
+  >
 
-    <div class="section-title">
-        <h2>Nosso Cardápio</h2>
-        <p>Escolha seu favorito e adicione ao carrinho.</p>
+  <div class="categories">
+
+    <button class="category active"
+            onclick="filtrar('todos',this)">
+      Todos
+    </button>
+
+    <button class="category"
+            onclick="filtrar('hamburguer',this)">
+      🍔 Hambúrgueres
+    </button>
+
+    <button class="category"
+            onclick="filtrar('especial',this)">
+      ⭐ Especiais
+    </button>
+
+  </div>
+
+  <h2 class="section-title">Cardápio</h2>
+
+  <div class="products" id="products"></div>
+
+</main>
+
+<!-- BENEFÍCIOS -->
+<section class="features">
+
+  <div class="feature-grid">
+
+    <div class="feature">
+      <h3>🍔 Lanches caprichados</h3>
+      <p>Preparados especialmente para você.</p>
     </div>
 
-    <div class="menu-filter">
-
-        <button class="filter active" onclick="filterProducts('todos',this)">
-            Todos
-        </button>
-
-        <button class="filter" onclick="filterProducts('hamburguer',this)">
-            Hambúrgueres
-        </button>
-
-        <button class="filter" onclick="filterProducts('especial',this)">
-            Especiais
-        </button>
-
+    <div class="feature">
+      <h3>⚡ Pedido rápido</h3>
+      <p>Faça seu pedido online de forma simples.</p>
     </div>
 
-    <div class="products">
-
-        <article class="product" data-category="hamburguer">
-            <img class="product-img" src="imagens/hamburguer1.jpeg" alt="X-Tudo">
-            <div class="product-body">
-                <h3>X-Tudo</h3>
-                <p>Um lanche completo e caprichado.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 15,99</span>
-                    <button class="add" onclick="addToCart('X-Tudo',15.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="hamburguer">
-            <img class="product-img" src="imagens/hamburguer2.jpeg" alt="X-Duplo">
-            <div class="product-body">
-                <h3>X-Duplo</h3>
-                <p>Mais recheio para quem gosta de um lanche reforçado.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 20,99</span>
-                    <button class="add" onclick="addToCart('X-Duplo',20.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="hamburguer">
-            <img class="product-img" src="imagens/hamburguer3.jpeg" alt="X-Bacon">
-            <div class="product-body">
-                <h3>X-Bacon</h3>
-                <p>Uma combinação deliciosa com bacon.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 17,99</span>
-                    <button class="add" onclick="addToCart('X-Bacon',17.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="hamburguer">
-            <img class="product-img" src="imagens/hamburguer4.jpeg" alt="X-Picanha">
-            <div class="product-body">
-                <h3>X-Picanha</h3>
-                <p>Um sabor especial para o seu pedido.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 19,99</span>
-                    <button class="add" onclick="addToCart('X-Picanha',19.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="hamburguer">
-            <img class="product-img" src="imagens/hamburguer5.jpeg" alt="X-Chicken">
-            <div class="product-body">
-                <h3>X-Chicken</h3>
-                <p>Uma opção deliciosa para os fãs de frango.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 12,99</span>
-                    <button class="add" onclick="addToCart('X-Chicken',12.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="especial">
-            <img class="product-img" src="imagens/hamburguer6.jpeg" alt="X-Batata">
-            <div class="product-body">
-                <h3>X-Batata</h3>
-                <p>Uma combinação que não decepciona.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 18,99</span>
-                    <button class="add" onclick="addToCart('X-Batata',18.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="especial">
-            <img class="product-img" src="imagens/hamburguer7.jpeg" alt="X-Onions">
-            <div class="product-body">
-                <h3>X-Onions</h3>
-                <p>Um lanche especial para matar a fome.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 18,99</span>
-                    <button class="add" onclick="addToCart('X-Onions',18.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="especial">
-            <img class="product-img" src="imagens/hamburguer8.jpeg" alt="X-Mineiro">
-            <div class="product-body">
-                <h3>X-Mineiro</h3>
-                <p>Sabor especial para deixar seu pedido melhor.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 19,99</span>
-                    <button class="add" onclick="addToCart('X-Mineiro',19.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="especial">
-            <img class="product-img" src="imagens/hamburguer9.jpeg" alt="X-3 Queijos">
-            <div class="product-body">
-                <h3>X-3 Queijos</h3>
-                <p>Para quem ama uma combinação bem cremosa.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 19,99</span>
-                    <button class="add" onclick="addToCart('X-3 Queijos',19.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="hamburguer">
-            <img class="product-img" src="imagens/hamburguer10.jpeg" alt="Cheesburguer">
-            <div class="product-body">
-                <h3>Cheesburguer</h3>
-                <p>Clássico, simples e delicioso.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 9,00</span>
-                    <button class="add" onclick="addToCart('Cheesburguer',9)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
-        <article class="product" data-category="especial">
-            <img class="product-img" src="imagens/hamburguer11.jpeg" alt="Duplo Cheddar">
-            <div class="product-body">
-                <h3>Duplo Cheddar</h3>
-                <p>Uma opção especial para os amantes de cheddar.</p>
-                <div class="product-bottom">
-                    <span class="price">R$ 17,99</span>
-                    <button class="add" onclick="addToCart('Duplo Cheddar',17.99)">
-                        + Adicionar
-                    </button>
-                </div>
-            </div>
-        </article>
-
+    <div class="feature">
+      <h3>📱 Atendimento</h3>
+      <p>Fale diretamente com a VF Filhos Lanches.</p>
     </div>
+
+  </div>
 
 </section>
 
-<!-- ================= SOBRE ================= -->
+<!-- BOTÃO CARRINHO -->
+<button class="cart-floating" onclick="abrirCarrinho()">
+  🛒 Carrinho
+  <span class="cart-count" id="cartCount">0</span>
+</button>
 
-<div class="about">
+<!-- OVERLAY -->
+<div class="overlay" id="overlay" onclick="fecharTudo()"></div>
 
-    <div class="about-inner">
+<!-- CARRINHO -->
+<div class="drawer" id="cartDrawer">
 
-        <div>
-            <h2>VF Filhos Lanches</h2>
+  <div class="drawer-header">
 
-            <p>
-                Um lugar para matar a fome com muito sabor.
-                Escolha seu lanche, monte seu carrinho e envie
-                seu pedido de forma rápida e prática.
-            </p>
-        </div>
+    <h2>Seu pedido</h2>
 
-        <div class="about-card">
+    <button class="close" onclick="fecharCarrinho()">✕</button>
 
-            <div>
-                <strong>📍 Onde estamos</strong>
-                <span>Estrada Luiz Mário da Rocha Lima, 1459</span>
-            </div>
+  </div>
 
-            <div>
-                <strong>🕐 Horário</strong>
-                <span>Todos os dias, das 10:00 às 00:00</span>
-            </div>
+  <div id="cartItems"></div>
 
-            <div>
-                <strong>📱 Pedidos</strong>
-                <span>(21) 98395-0843</span>
-            </div>
+  <div class="coupon-box">
 
-        </div>
+    <input
+      id="couponInput"
+      placeholder="Cupom de desconto"
+    >
 
+    <button onclick="aplicarCupom()">
+      Aplicar
+    </button>
+
+  </div>
+
+  <p id="couponMessage"
+     style="margin-top:8px;font-size:13px;">
+  </p>
+
+  <div class="summary">
+
+    <div class="summary-row">
+      <span>Subtotal</span>
+      <strong id="subtotal">R$ 0,00</strong>
     </div>
+
+    <div class="summary-row">
+      <span>Desconto</span>
+      <strong id="discount">R$ 0,00</strong>
+    </div>
+
+    <div class="summary-row total">
+      <span>Total</span>
+      <strong id="total">R$ 0,00</strong>
+    </div>
+
+    <button class="checkout-btn"
+            onclick="abrirCheckout()">
+      Continuar pedido →
+    </button>
+
+  </div>
 
 </div>
 
-<!-- ================= CUPONS ================= -->
+<!-- CHECKOUT -->
+<div class="modal" id="checkoutModal">
 
-<section id="cupons">
+  <div class="modal-content">
 
-    <div class="section-title">
-        <h2>🎟️ Cupons</h2>
-        <p>Tem um cupom? Digite abaixo para aplicar no seu carrinho.</p>
-    </div>
+    <div class="modal-header">
 
-    <div class="coupon-box">
+      <h2>Finalizar pedido</h2>
 
-        <h3>Ganhe seu desconto</h3>
-
-        <p>
-            Digite o código do cupom que você recebeu.
-        </p>
-
-        <div class="coupon-input">
-
-            <input
-                type="text"
-                id="couponInput"
-                placeholder="Digite seu cupom"
-            >
-
-            <button onclick="applyCoupon()">
-                Aplicar
-            </button>
-
-        </div>
-
-        <div class="coupon-message" id="couponMessage"></div>
+      <button class="close"
+              onclick="fecharCheckout()">
+        ✕
+      </button>
 
     </div>
 
-</section>
+    <div class="form-group">
+      <label>Nome</label>
+      <input id="nome" placeholder="Seu nome">
+    </div>
 
-<!-- ================= FOOTER ================= -->
+    <div class="form-group">
+      <label>WhatsApp</label>
+      <input id="telefone" placeholder="(21) 99999-9999">
+    </div>
+
+    <div class="form-group">
+      <label>Rua</label>
+      <input id="rua" placeholder="Rua / Estrada">
+    </div>
+
+    <div class="form-group">
+      <label>Número</label>
+      <input id="numero" placeholder="Número">
+    </div>
+
+    <div class="form-group">
+      <label>Complemento</label>
+      <input id="complemento"
+             placeholder="Casa, apartamento etc.">
+    </div>
+
+    <div class="form-group">
+      <label>Bairro</label>
+      <input id="bairro" placeholder="Seu bairro">
+    </div>
+
+    <div class="form-group">
+      <label>Ponto de referência</label>
+      <input id="referencia"
+             placeholder="Ex: perto da praça">
+    </div>
+
+    <div class="form-group">
+
+      <label>Forma de pagamento</label>
+
+      <div class="payment">
+
+        <label>
+          <input type="radio"
+                 name="pagamento"
+                 value="Dinheiro"
+                 checked>
+          💵 Dinheiro
+        </label>
+
+        <label>
+          <input type="radio"
+                 name="pagamento"
+                 value="PIX">
+          📱 PIX
+        </label>
+
+        <label>
+          <input type="radio"
+                 name="pagamento"
+                 value="Cartão na entrega">
+          💳 Cartão na entrega
+        </label>
+
+      </div>
+
+    </div>
+
+    <div class="form-group">
+
+      <label>Observações</label>
+
+      <textarea
+        id="observacoes"
+        placeholder="Ex: sem cebola, tocar campainha..."></textarea>
+
+    </div>
+
+    <button class="checkout-btn"
+            onclick="finalizarPedido()">
+      ✅ Confirmar pedido
+    </button>
+
+  </div>
+
+</div>
+
+<!-- CUPONS -->
+<div class="modal" id="couponModal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+
+      <h2>🎟️ Cupons</h2>
+
+      <button class="close"
+              onclick="fecharCupons()">
+        ✕
+      </button>
+
+    </div>
+
+    <div id="couponList"></div>
+
+  </div>
+
+</div>
+
+<!-- ADMIN -->
+<div class="modal" id="adminModal">
+
+  <div class="modal-content">
+
+    <div class="modal-header">
+
+      <h2>⚙️ Administrador</h2>
+
+      <button class="close"
+              onclick="fecharAdmin()">
+        ✕
+      </button>
+
+    </div>
+
+    <div id="adminLogin">
+
+      <div class="form-group">
+
+        <label>Senha administrativa</label>
+
+        <input
+          type="password"
+          id="adminPassword"
+          placeholder="Digite a senha"
+        >
+
+      </div>
+
+      <button class="checkout-btn"
+              onclick="loginAdmin()">
+        Entrar
+      </button>
+
+      <p id="adminError"
+         style="color:#d00;margin-top:10px;">
+      </p>
+
+    </div>
+
+    <div id="adminPanel" style="display:none;">
+
+      <h3>Cupons cadastrados</h3>
+
+      <div class="form-group" style="margin-top:15px;">
+
+        <label>Código</label>
+
+        <input
+          id="newCouponCode"
+          placeholder="Ex: VF10"
+        >
+
+      </div>
+
+      <div class="form-group">
+
+        <label>Desconto (%)</label>
+
+        <input
+          type="number"
+          id="newCouponDiscount"
+          placeholder="10"
+        >
+
+      </div>
+
+      <button class="checkout-btn"
+              onclick="criarCupom()">
+        + Criar cupom
+      </button>
+
+      <div id="adminCoupons"
+           style="margin-top:20px;">
+      </div>
+
+    </div>
+
+  </div>
+
+</div>
 
 <footer>
 
-    <p>
-        © 2026 <strong>VF Filhos Lanches</strong>.
-        Todos os direitos reservados.
-    </p>
+  <h2>VF FILHOS LANCHES</h2>
 
-    <p style="margin-top:8px;">
-        Estrada Luiz Mário da Rocha Lima, 1459 •
-        10:00 às 00:00
-    </p>
+  <p>Estrada Luiz Mário da Rocha Lima, 1459</p>
+
+  <p>🕐 Atendimento: 10:00 às 00:00</p>
+
+  <p style="margin-top:20px;">
+    © 2026 VF Filhos Lanches
+  </p>
 
 </footer>
 
-<!-- ================= CARRINHO ================= -->
-
-<button class="cart-float" onclick="openCart()" aria-label="Abrir carrinho">
-    🛒
-    <span class="cart-count" id="cartCount">0</span>
-</button>
-
-<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
-
-<aside class="cart" id="cart">
-
-    <div class="cart-head">
-
-        <div>
-            <h2>Seu Carrinho</h2>
-            <small style="color:#888;">
-                Confira seu pedido
-            </small>
-        </div>
-
-        <button onclick="closeCart()">✕</button>
-
-    </div>
-
-    <div class="cart-items" id="cartItems">
-
-        <div class="empty-cart">
-            🛒<br><br>
-            Seu carrinho está vazio.
-        </div>
-
-    </div>
-
-    <div class="cart-bottom">
-
-        <div class="total-row">
-            <span>Subtotal</span>
-            <strong id="subtotal">R$ 0,00</strong>
-        </div>
-
-        <div class="total-row">
-            <span>Desconto</span>
-            <strong id="discount">R$ 0,00</strong>
-        </div>
-
-        <div class="total-row final">
-            <span>Total</span>
-            <strong id="total">R$ 0,00</strong>
-        </div>
-
-        <button class="checkout" onclick="checkoutWhatsApp()">
-            📱 Finalizar pedido pelo WhatsApp
-        </button>
-
-    </div>
-
-</aside>
-
-<!-- ================= LOGIN ADMIN ================= -->
-
-<div class="modal-overlay" id="adminLoginModal">
-
-    <div class="modal">
-
-        <div class="modal-head">
-
-            <h2>🔐 Administrador</h2>
-
-            <button class="modal-close" onclick="closeAdminLogin()">
-                ✕
-            </button>
-
-        </div>
-
-        <p style="color:#999;margin-bottom:20px;">
-            Digite a senha para administrar os cupons.
-        </p>
-
-        <div class="form-group">
-
-            <label>Senha</label>
-
-            <input
-                type="password"
-                id="adminPassword"
-                placeholder="Digite a senha"
-            >
-
-        </div>
-
-        <button class="modal-action" onclick="loginAdmin()">
-            Entrar
-        </button>
-
-        <p id="adminError"
-           style="color:#ff4b55;text-align:center;margin-top:12px;">
-        </p>
-
-    </div>
-
-</div>
-
-<!-- ================= PAINEL ADMIN ================= -->
-
-<div class="modal-overlay" id="adminModal">
-
-    <div class="modal">
-
-        <div class="modal-head">
-
-            <h2>⚙️ Cupons</h2>
-
-            <button class="modal-close" onclick="closeAdmin()">
-                ✕
-            </button>
-
-        </div>
-
-        <p style="color:#999;margin-bottom:20px;">
-            Crie e remova cupons disponíveis no site.
-        </p>
-
-        <div class="form-group">
-
-            <label>Código do cupom</label>
-
-            <input
-                type="text"
-                id="newCouponCode"
-                placeholder="Ex: VF10"
-            >
-
-        </div>
-
-        <div class="form-group">
-
-            <label>Desconto em %</label>
-
-            <input
-                type="number"
-                id="newCouponDiscount"
-                placeholder="Ex: 10"
-                min="1"
-                max="100"
-            >
-
-        </div>
-
-        <button class="modal-action" onclick="createCoupon()">
-            + Criar cupom
-        </button>
-
-        <div class="admin-list" id="adminCouponList"></div>
-
-    </div>
-
-</div>
-
 <script>
-
-/* =========================================================
-   CONFIGURAÇÕES
-========================================================= */
 
 const WHATSAPP = "5521983950843";
 
@@ -1542,629 +999,824 @@ const INSTAGRAM =
 
 const ADMIN_PASSWORD = "2911";
 
+let categoriaAtual = "todos";
 
-/* =========================================================
-   MENU
-========================================================= */
+let carrinho = [];
 
-function openMenu(){
-    document.getElementById("drawer").classList.add("active");
-    document.getElementById("menuOverlay").classList.add("active");
+let desconto = 0;
+
+let cupons = JSON.parse(
+  localStorage.getItem("vf_cupons")
+) || [
+  {
+    codigo:"VF10",
+    desconto:10
+  }
+];
+
+const produtos = [
+
+{
+ id:1,
+ nome:"X-Tudo",
+ preco:15.99,
+ categoria:"hamburguer",
+ imagem:"imagens/hamburguer1.jpeg",
+ descricao:"Hambúrguer completo e caprichado."
+},
+
+{
+ id:2,
+ nome:"X-Duplo",
+ preco:20.99,
+ categoria:"hamburguer",
+ imagem:"imagens/hamburguer2.jpeg",
+ descricao:"Dois hambúrgueres para matar a fome."
+},
+
+{
+ id:3,
+ nome:"X-Bacon",
+ preco:17.99,
+ categoria:"hamburguer",
+ imagem:"imagens/hamburguer3.jpeg",
+ descricao:"Hambúrguer com bacon crocante."
+},
+
+{
+ id:4,
+ nome:"X-Picanha",
+ preco:19.99,
+ categoria:"hamburguer",
+ imagem:"imagens/hamburguer4.jpeg",
+ descricao:"Sabor especial de picanha."
+},
+
+{
+ id:5,
+ nome:"X-Chicken",
+ preco:12.99,
+ categoria:"hamburguer",
+ imagem:"imagens/hamburguer5.jpeg",
+ descricao:"Hambúrguer de frango."
+},
+
+{
+ id:6,
+ nome:"X-Batata",
+ preco:18.99,
+ categoria:"especial",
+ imagem:"imagens/hamburguer6.jpeg",
+ descricao:"Lanche especial acompanhado de batata."
+},
+
+{
+ id:7,
+ nome:"X-Onions",
+ preco:18.99,
+ categoria:"especial",
+ imagem:"imagens/hamburguer7.jpeg",
+ descricao:"Lanche especial com onions."
+},
+
+{
+ id:8,
+ nome:"X-Mineiro",
+ preco:19.99,
+ categoria:"especial",
+ imagem:"imagens/hamburguer8.jpeg",
+ descricao:"Uma combinação especial da casa."
+},
+
+{
+ id:9,
+ nome:"X-3 Queijos",
+ preco:19.99,
+ categoria:"especial",
+ imagem:"imagens/hamburguer9.jpeg",
+ descricao:"Muito queijo para quem ama queijo."
+},
+
+{
+ id:10,
+ nome:"Cheesburguer",
+ preco:9.00,
+ categoria:"hamburguer",
+ imagem:"imagens/hamburguer10.jpeg",
+ descricao:"Clássico cheeseburguer."
+},
+
+{
+ id:11,
+ nome:"Duplo Cheddar",
+ preco:17.99,
+ categoria:"especial",
+ imagem:"imagens/hamburguer11.jpeg",
+ descricao:"Duplo cheddar cremoso."
 }
 
-function closeMenu(){
-    document.getElementById("drawer").classList.remove("active");
-    document.getElementById("menuOverlay").classList.remove("active");
-}
+];
 
-function openWhatsApp(){
+function dinheiro(valor){
 
-    const url = "https://wa.me/" + WHATSAPP;
-
-    window.open(url,"_blank");
-
-}
-
-function openInstagram(){
-
-    window.open(INSTAGRAM,"_blank");
-
-}
-
-function goCoupons(){
-
-    closeMenu();
-
-    document.getElementById("cupons").scrollIntoView({
-        behavior:"smooth"
-    });
-
-}
-
-
-/* =========================================================
-   FILTRO DO CARDÁPIO
-========================================================= */
-
-function filterProducts(category,button){
-
-    document.querySelectorAll(".filter").forEach(btn=>{
-        btn.classList.remove("active");
-    });
-
-    button.classList.add("active");
-
-    document.querySelectorAll(".product").forEach(product=>{
-
-        if(category === "todos"){
-            product.style.display = "";
-        }
-
-        else if(product.dataset.category === category){
-            product.style.display = "";
-        }
-
-        else{
-            product.style.display = "none";
-        }
-
-    });
-
-}
-
-
-/* =========================================================
-   CARRINHO
-========================================================= */
-
-let cartItems = [];
-
-let appliedCoupon = null;
-
-let coupons = JSON.parse(
-    localStorage.getItem("vf_filhos_coupons") || "{}"
-);
-
-
-function addToCart(name,price){
-
-    const existing = cartItems.find(
-        item => item.name === name
-    );
-
-    if(existing){
-        existing.quantity++;
-    }
-
-    else{
-
-        cartItems.push({
-            name:name,
-            price:price,
-            quantity:1
-        });
-
-    }
-
-    updateCart();
-
-    openCart();
-
-}
-
-
-function removeFromCart(name){
-
-    cartItems = cartItems.filter(
-        item => item.name !== name
-    );
-
-    updateCart();
-
-}
-
-
-function changeQuantity(name,amount){
-
-    const item = cartItems.find(
-        item => item.name === name
-    );
-
-    if(!item) return;
-
-    item.quantity += amount;
-
-    if(item.quantity <= 0){
-        removeFromCart(name);
-        return;
-    }
-
-    updateCart();
+ return valor.toLocaleString("pt-BR",{
+   style:"currency",
+   currency:"BRL"
+ });
 
 }
 
+function renderProdutos(){
 
-function updateCart(){
+ const busca =
+ document.getElementById("search").value.toLowerCase();
 
-    const container =
-        document.getElementById("cartItems");
+ const container =
+ document.getElementById("products");
 
-    const count =
-        cartItems.reduce(
-            (total,item)=>total + item.quantity,
-            0
-        );
+ const lista =
+ produtos.filter(p => {
 
-    document.getElementById("cartCount").textContent = count;
+   const categoria =
+   categoriaAtual === "todos" ||
+   p.categoria === categoriaAtual;
 
-    if(cartItems.length === 0){
+   const nome =
+   p.nome.toLowerCase().includes(busca);
 
-        container.innerHTML = `
-            <div class="empty-cart">
-                🛒<br><br>
-                Seu carrinho está vazio.
-            </div>
-        `;
+   return categoria && nome;
 
-    }
+ });
 
-    else{
+ if(lista.length === 0){
 
-        container.innerHTML = cartItems.map(item => `
+   container.innerHTML =
+   '<div class="empty">Nenhum produto encontrado.</div>';
 
-            <div class="cart-item">
+   return;
 
-                <div class="cart-item-top">
+ }
 
-                    <span class="cart-item-name">
-                        ${item.name}
-                    </span>
+ container.innerHTML =
+ lista.map(p => `
 
-                    <span class="cart-item-price">
-                        ${formatMoney(item.price * item.quantity)}
-                    </span>
+   <div class="product">
 
-                </div>
+     <img src="${p.imagem}"
+          alt="${p.nome}">
 
-                <div class="cart-controls">
+     <div class="product-info">
 
-                    <button
-                        class="qty"
-                        onclick="changeQuantity('${item.name}',-1)"
-                    >
-                        −
-                    </button>
+       <h3>${p.nome}</h3>
 
-                    <strong>
-                        ${item.quantity}
-                    </strong>
+       <p>${p.descricao}</p>
 
-                    <button
-                        class="qty"
-                        onclick="changeQuantity('${item.name}',1)"
-                    >
-                        +
-                    </button>
+       <div class="price">
+         ${dinheiro(p.preco)}
+       </div>
 
-                    <button
-                        class="remove"
-                        onclick="removeFromCart('${item.name}')"
-                    >
-                        Remover
-                    </button>
+       <button
+         class="add-btn"
+         onclick="adicionar(${p.id})">
+         + Adicionar
+       </button>
 
-                </div>
+     </div>
 
-            </div>
+   </div>
 
-        `).join("");
-
-    }
-
-    calculateTotal();
+ `).join("");
 
 }
 
+function filtrar(categoria,botao){
 
-function calculateTotal(){
+ categoriaAtual = categoria;
 
-    const subtotal =
-        cartItems.reduce(
-            (total,item)=>
-                total + item.price * item.quantity,
-            0
-        );
+ document
+ .querySelectorAll(".category")
+ .forEach(b => b.classList.remove("active"));
 
-    let discount = 0;
+ botao.classList.add("active");
 
-    if(appliedCoupon){
-
-        discount =
-            subtotal *
-            (appliedCoupon.discount / 100);
-
-    }
-
-    const total = subtotal - discount;
-
-    document.getElementById("subtotal").textContent =
-        formatMoney(subtotal);
-
-    document.getElementById("discount").textContent =
-        "- " + formatMoney(discount);
-
-    document.getElementById("total").textContent =
-        formatMoney(total);
+ renderProdutos();
 
 }
 
+function adicionar(id){
 
-function openCart(){
+ const produto =
+ produtos.find(p => p.id === id);
 
-    document
-        .getElementById("cart")
-        .classList.add("active");
+ const existente =
+ carrinho.find(i => i.id === id);
 
-    document
-        .getElementById("cartOverlay")
-        .classList.add("active");
+ if(existente){
 
-}
+   existente.quantidade++;
 
+ }else{
 
-function closeCart(){
+   carrinho.push({
+     ...produto,
+     quantidade:1
+   });
 
-    document
-        .getElementById("cart")
-        .classList.remove("active");
+ }
 
-    document
-        .getElementById("cartOverlay")
-        .classList.remove("active");
+ atualizarCarrinho();
 
-}
-
-
-/* =========================================================
-   CUPONS
-========================================================= */
-
-function applyCoupon(){
-
-    const input =
-        document
-        .getElementById("couponInput")
-        .value
-        .trim()
-        .toUpperCase();
-
-    const message =
-        document.getElementById("couponMessage");
-
-    if(!input){
-
-        message.style.color = "#ff4b55";
-        message.textContent =
-            "Digite um código de cupom.";
-
-        return;
-
-    }
-
-    const coupon = coupons[input];
-
-    if(!coupon){
-
-        message.style.color = "#ff4b55";
-        message.textContent =
-            "Cupom inválido ou inexistente.";
-
-        appliedCoupon = null;
-        updateCart();
-
-        return;
-
-    }
-
-    appliedCoupon = {
-        code:input,
-        discount:Number(coupon)
-    };
-
-    message.style.color = "#20c866";
-
-    message.textContent =
-        "Cupom " + input +
-        " aplicado! Desconto de " +
-        coupon + "%.";
-
-    updateCart();
+ abrirCarrinho();
 
 }
 
+function alterarQuantidade(id,valor){
 
-function createCoupon(){
+ const item =
+ carrinho.find(i => i.id === id);
 
-    const code =
-        document
-        .getElementById("newCouponCode")
-        .value
-        .trim()
-        .toUpperCase();
+ if(!item) return;
 
-    const discount =
-        Number(
-            document
-            .getElementById("newCouponDiscount")
-            .value
-        );
+ item.quantidade += valor;
 
-    if(!code || !discount){
+ if(item.quantidade <= 0){
 
-        alert("Preencha o código e o desconto.");
+   carrinho =
+   carrinho.filter(i => i.id !== id);
 
-        return;
+ }
 
-    }
-
-    if(discount < 1 || discount > 100){
-
-        alert("O desconto deve estar entre 1% e 100%.");
-
-        return;
-
-    }
-
-    coupons[code] = discount;
-
-    localStorage.setItem(
-        "vf_filhos_coupons",
-        JSON.stringify(coupons)
-    );
-
-    document.getElementById("newCouponCode").value = "";
-    document.getElementById("newCouponDiscount").value = "";
-
-    renderAdminCoupons();
-
-    alert("Cupom criado com sucesso!");
+ atualizarCarrinho();
 
 }
 
+function remover(id){
 
-function deleteCoupon(code){
+ carrinho =
+ carrinho.filter(i => i.id !== id);
 
-    if(!confirm("Excluir o cupom " + code + "?")){
-        return;
-    }
-
-    delete coupons[code];
-
-    localStorage.setItem(
-        "vf_filhos_coupons",
-        JSON.stringify(coupons)
-    );
-
-    if(appliedCoupon && appliedCoupon.code === code){
-        appliedCoupon = null;
-    }
-
-    renderAdminCoupons();
-    updateCart();
+ atualizarCarrinho();
 
 }
 
+function atualizarCarrinho(){
 
-function renderAdminCoupons(){
+ const container =
+ document.getElementById("cartItems");
 
-    const list =
-        document.getElementById("adminCouponList");
+ document.getElementById("cartCount").textContent =
+ carrinho.reduce(
+   (total,item) =>
+   total + item.quantidade,
+   0
+ );
 
-    const keys = Object.keys(coupons);
+ if(carrinho.length === 0){
 
-    if(keys.length === 0){
+   container.innerHTML =
+   '<div class="empty">Seu carrinho está vazio.</div>';
 
-        list.innerHTML = `
-            <p style="color:#888;text-align:center;">
-                Nenhum cupom cadastrado.
-            </p>
-        `;
+ }else{
 
-        return;
+   container.innerHTML =
+   carrinho.map(item => `
 
-    }
+     <div class="cart-item">
 
-    list.innerHTML = keys.map(code => `
+       <img src="${item.imagem}">
 
-        <div class="admin-coupon">
+       <div class="cart-item-info">
 
-            <div>
-                <strong>${code}</strong>
+         <strong>${item.nome}</strong>
 
-                <div style="color:#20c866;font-size:13px;margin-top:4px;">
-                    ${coupons[code]}% de desconto
-                </div>
-            </div>
+         <div>
+           ${dinheiro(item.preco)}
+         </div>
 
-            <button
-                class="delete-coupon"
-                onclick="deleteCoupon('${code}')"
-            >
-                Excluir
-            </button>
+         <div class="qty">
 
-        </div>
+           <button
+             onclick="alterarQuantidade(${item.id},-1)">
+             −
+           </button>
 
-    `).join("");
+           <span>${item.quantidade}</span>
 
-}
+           <button
+             onclick="alterarQuantidade(${item.id},1)">
+             +
+           </button>
 
+         </div>
 
-/* =========================================================
-   ADMIN
-========================================================= */
+         <button
+           class="remove"
+           onclick="remover(${item.id})">
+           Remover
+         </button>
 
-function openAdminLogin(){
+       </div>
 
-    closeMenu();
+     </div>
 
-    document
-        .getElementById("adminLoginModal")
-        .classList.add("active");
+   `).join("");
 
-    document.getElementById("adminPassword").value = "";
+ }
 
-    document.getElementById("adminError").textContent = "";
-
-}
-
-
-function closeAdminLogin(){
-
-    document
-        .getElementById("adminLoginModal")
-        .classList.remove("active");
+ calcularTotal();
 
 }
 
+function calcularTotal(){
+
+ const subtotal =
+ carrinho.reduce(
+   (total,item) =>
+   total + item.preco * item.quantidade,
+   0
+ );
+
+ const valorDesconto =
+ subtotal * (desconto / 100);
+
+ const total =
+ subtotal - valorDesconto;
+
+ document.getElementById("subtotal").textContent =
+ dinheiro(subtotal);
+
+ document.getElementById("discount").textContent =
+ "-" + dinheiro(valorDesconto);
+
+ document.getElementById("total").textContent =
+ dinheiro(total);
+
+}
+
+function aplicarCupom(){
+
+ const codigo =
+ document.getElementById("couponInput")
+ .value
+ .trim()
+ .toUpperCase();
+
+ const cupom =
+ cupons.find(c => c.codigo === codigo);
+
+ const mensagem =
+ document.getElementById("couponMessage");
+
+ if(!cupom){
+
+   desconto = 0;
+
+   mensagem.textContent =
+   "❌ Cupom inválido.";
+
+   mensagem.style.color =
+   "#d00000";
+
+ }else{
+
+   desconto = cupom.desconto;
+
+   mensagem.textContent =
+   "✅ Cupom aplicado: " +
+   cupom.desconto +
+   "% de desconto.";
+
+   mensagem.style.color =
+   "#159447";
+
+ }
+
+ calcularTotal();
+
+}
+
+function abrirCarrinho(){
+
+ document
+ .getElementById("cartDrawer")
+ .classList.add("open");
+
+ document
+ .getElementById("overlay")
+ .classList.add("show");
+
+}
+
+function fecharCarrinho(){
+
+ document
+ .getElementById("cartDrawer")
+ .classList.remove("open");
+
+ document
+ .getElementById("overlay")
+ .classList.remove("show");
+
+}
+
+function abrirMenu(){
+
+ document
+ .getElementById("menu")
+ .classList.add("open");
+
+}
+
+function fecharMenu(){
+
+ document
+ .getElementById("menu")
+ .classList.remove("open");
+
+}
+
+function fecharTudo(){
+
+ fecharCarrinho();
+ fecharMenu();
+
+}
+
+function abrirCheckout(){
+
+ if(carrinho.length === 0){
+
+   alert("Seu carrinho está vazio.");
+
+   return;
+
+ }
+
+ document
+ .getElementById("checkoutModal")
+ .classList.add("show");
+
+}
+
+function fecharCheckout(){
+
+ document
+ .getElementById("checkoutModal")
+ .classList.remove("show");
+
+}
+
+function finalizarPedido(){
+
+ if(carrinho.length === 0){
+
+   alert("Seu carrinho está vazio.");
+
+   return;
+
+ }
+
+ const nome =
+ document.getElementById("nome").value.trim();
+
+ const telefone =
+ document.getElementById("telefone").value.trim();
+
+ const rua =
+ document.getElementById("rua").value.trim();
+
+ const numero =
+ document.getElementById("numero").value.trim();
+
+ const complemento =
+ document.getElementById("complemento").value.trim();
+
+ const bairro =
+ document.getElementById("bairro").value.trim();
+
+ const referencia =
+ document.getElementById("referencia").value.trim();
+
+ const observacoes =
+ document.getElementById("observacoes").value.trim();
+
+ const pagamento =
+ document.querySelector(
+   'input[name="pagamento"]:checked'
+ ).value;
+
+ if(!nome ||
+    !telefone ||
+    !rua ||
+    !numero ||
+    !bairro){
+
+   alert(
+    "Preencha nome, WhatsApp e endereço."
+   );
+
+   return;
+
+ }
+
+ let mensagem =
+ "🍔 *NOVO PEDIDO - VF FILHOS LANCHES*%0A%0A";
+
+ mensagem +=
+ "*Cliente:* " +
+ encodeURIComponent(nome) +
+ "%0A";
+
+ mensagem +=
+ "*WhatsApp:* " +
+ encodeURIComponent(telefone) +
+ "%0A%0A";
+
+ mensagem += "*PEDIDO:*%0A";
+
+ carrinho.forEach(item => {
+
+   mensagem +=
+   encodeURIComponent(
+     item.quantidade +
+     "x " +
+     item.nome +
+     " - " +
+     dinheiro(item.preco * item.quantidade)
+   ) +
+   "%0A";
+
+ });
+
+ const subtotal =
+ carrinho.reduce(
+   (total,item) =>
+   total + item.preco * item.quantidade,
+   0
+ );
+
+ const valorDesconto =
+ subtotal * desconto / 100;
+
+ const total =
+ subtotal - valorDesconto;
+
+ mensagem += "%0A";
+
+ mensagem +=
+ "*Subtotal:* " +
+ encodeURIComponent(dinheiro(subtotal)) +
+ "%0A";
+
+ mensagem +=
+ "*Desconto:* " +
+ encodeURIComponent(dinheiro(valorDesconto)) +
+ "%0A";
+
+ mensagem +=
+ "*TOTAL:* " +
+ encodeURIComponent(dinheiro(total)) +
+ "%0A%0A";
+
+ mensagem +=
+ "*ENDEREÇO:*%0A" +
+ encodeURIComponent(
+   rua +
+   ", " +
+   numero +
+   (complemento
+     ? " - " + complemento
+     : "") +
+   " - " +
+   bairro
+ ) +
+ "%0A";
+
+ if(referencia){
+
+   mensagem +=
+   "*Referência:* " +
+   encodeURIComponent(referencia) +
+   "%0A";
+
+ }
+
+ mensagem +=
+ "*Pagamento:* " +
+ encodeURIComponent(pagamento) +
+ "%0A";
+
+ if(observacoes){
+
+   mensagem +=
+   "*Observações:* " +
+   encodeURIComponent(observacoes) +
+   "%0A";
+
+ }
+
+ const url =
+ "https://wa.me/" +
+ WHATSAPP +
+ "?text=" +
+ mensagem;
+
+ window.open(url,"_blank");
+
+}
+
+function abrirCupons(){
+
+ fecharMenu();
+
+ const lista =
+ document.getElementById("couponList");
+
+ lista.innerHTML =
+ cupons.map(c => `
+
+   <div style="
+     border:1px solid #ddd;
+     padding:15px;
+     border-radius:12px;
+     margin-bottom:10px;
+   ">
+
+     <strong>${c.codigo}</strong>
+
+     <span>
+       — ${c.desconto}% OFF
+     </span>
+
+   </div>
+
+ `).join("");
+
+ document
+ .getElementById("couponModal")
+ .classList.add("show");
+
+}
+
+function fecharCupons(){
+
+ document
+ .getElementById("couponModal")
+ .classList.remove("show");
+
+}
+
+function abrirAdmin(){
+
+ fecharMenu();
+
+ document
+ .getElementById("adminModal")
+ .classList.add("show");
+
+}
+
+function fecharAdmin(){
+
+ document
+ .getElementById("adminModal")
+ .classList.remove("show");
+
+}
 
 function loginAdmin(){
 
-    const password =
-        document.getElementById("adminPassword").value;
+ const senha =
+ document.getElementById("adminPassword").value;
 
-    if(password === ADMIN_PASSWORD){
+ if(senha !== ADMIN_PASSWORD){
 
-        closeAdminLogin();
+   document.getElementById("adminError")
+   .textContent =
+   "❌ Senha incorreta.";
 
-        document
-            .getElementById("adminModal")
-            .classList.add("active");
+   return;
 
-        renderAdminCoupons();
+ }
 
-    }
+ document.getElementById("adminLogin")
+ .style.display = "none";
 
-    else{
+ document.getElementById("adminPanel")
+ .style.display = "block";
 
-        document.getElementById("adminError").textContent =
-            "Senha incorreta.";
-
-    }
-
-}
-
-
-function closeAdmin(){
-
-    document
-        .getElementById("adminModal")
-        .classList.remove("active");
+ renderAdminCoupons();
 
 }
 
+function criarCupom(){
 
-/* =========================================================
-   CHECKOUT WHATSAPP
-========================================================= */
+ const codigo =
+ document.getElementById("newCouponCode")
+ .value
+ .trim()
+ .toUpperCase();
 
-function checkoutWhatsApp(){
+ const descontoCupom =
+ Number(
+   document.getElementById("newCouponDiscount")
+   .value
+ );
 
-    if(cartItems.length === 0){
+ if(!codigo || !descontoCupom){
 
-        alert("Seu carrinho está vazio.");
+   alert("Preencha o código e o desconto.");
 
-        return;
+   return;
 
-    }
+ }
 
-    let message =
-        "🍔 *PEDIDO - VF FILHOS LANCHES*%0A%0A";
+ cupons.push({
+   codigo:codigo,
+   desconto:descontoCupom
+ });
 
-    cartItems.forEach(item => {
+ localStorage.setItem(
+   "vf_cupons",
+   JSON.stringify(cupons)
+ );
 
-        const itemTotal =
-            item.price * item.quantity;
+ document.getElementById("newCouponCode").value = "";
 
-        message +=
-            "• " +
-            item.name +
-            " x" +
-            item.quantity +
-            " - " +
-            formatMoney(itemTotal) +
-            "%0A";
+ document.getElementById("newCouponDiscount").value = "";
 
-    });
+ renderAdminCoupons();
 
-    const subtotal =
-        cartItems.reduce(
-            (total,item)=>
-                total + item.price * item.quantity,
-            0
-        );
-
-    let discount = 0;
-
-    if(appliedCoupon){
-
-        discount =
-            subtotal *
-            (appliedCoupon.discount / 100);
-
-        message +=
-            "%0A🎟️ Cupom: " +
-            appliedCoupon.code +
-            " (-" +
-            appliedCoupon.discount +
-            "%)%0A";
-
-    }
-
-    const total = subtotal - discount;
-
-    message +=
-        "%0A💰 *TOTAL: " +
-        formatMoney(total) +
-        "*%0A%0A";
-
-    message +=
-        "📍 Endereço da loja: " +
-        "Estrada Luiz Mário da Rocha Lima, 1459";
-
-    window.open(
-        "https://wa.me/" +
-        WHATSAPP +
-        "?text=" +
-        message,
-        "_blank"
-    );
+ alert("Cupom criado com sucesso!");
 
 }
 
+function excluirCupom(codigo){
 
-/* =========================================================
-   DINHEIRO
-========================================================= */
+ cupons =
+ cupons.filter(c => c.codigo !== codigo);
 
-function formatMoney(value){
+ localStorage.setItem(
+   "vf_cupons",
+   JSON.stringify(cupons)
+ );
 
-    return value.toLocaleString(
-        "pt-BR",
-        {
-            style:"currency",
-            currency:"BRL"
-        }
-    );
+ renderAdminCoupons();
 
 }
 
+function renderAdminCoupons(){
 
-/* =========================================================
-   INICIALIZAÇÃO
-========================================================= */
+ const container =
+ document.getElementById("adminCoupons");
 
-updateCart();
+ if(cupons.length === 0){
+
+   container.innerHTML =
+   "<p>Nenhum cupom cadastrado.</p>";
+
+   return;
+
+ }
+
+ container.innerHTML =
+ cupons.map(c => `
+
+   <div style="
+     display:flex;
+     justify-content:space-between;
+     align-items:center;
+     border:1px solid #ddd;
+     padding:12px;
+     margin-bottom:8px;
+     border-radius:10px;
+   ">
+
+     <div>
+       <strong>${c.codigo}</strong><br>
+       ${c.desconto}% OFF
+     </div>
+
+     <button
+       onclick="excluirCupom('${c.codigo}')"
+       style="
+         background:#d00000;
+         color:#fff;
+         padding:8px 10px;
+         border-radius:8px;
+       ">
+       Excluir
+     </button>
+
+   </div>
+
+ `).join("");
+
+}
+
+renderProdutos();
+
+atualizarCarrinho();
 
 </script>
 
